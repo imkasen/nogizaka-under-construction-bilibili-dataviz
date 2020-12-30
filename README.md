@@ -6,4 +6,3 @@
 
 * Linux
 * Python 3.8
-* requests
