@@ -1,6 +1,7 @@
 # 获得视频的 BV 号
 
 import requests
+import json
 
 
 id_tyyh = "2301165"  # 天翼羽魂 id
@@ -16,5 +17,22 @@ headers = {
      Chrome/70.0.3538.110 Safari/537.36"
 }
 
+params = {
+    "mid": id_tyyh,
+    "ps": "30",
+    "tid": "0",
+    "pn": "1",
+    "keyword": search_keyword1,
+    "order": "pubdate",
+    "jsonp": "jsonp"
+}
 
+response = requests.get(
+    url=url,
+    headers=headers,
+    params=params
+)
 
+results = response.json()
+total_page_num = int(results["data"]["page"]["count"] / results["data"]["page"]["ps"] + 1)
+print(total_page_num)
