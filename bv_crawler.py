@@ -27,10 +27,15 @@ params = {
     "jsonp": "jsonp"
 }
 
+proxies = {
+     "http": "153.36.134.176:9999"
+}
+
 response = requests.get(
     url=url,
     headers=headers,
-    params=params
+    params=params,
+    proxies=proxies
 )
 
 results = response.json()
