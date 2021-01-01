@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# 获得视频的 BV 号
+# 一个简单的爬虫，用于获得 “乃木板工事中” 的各个视频信息
 
 import requests
 import json
@@ -23,8 +23,6 @@ headers = {
 proxies = {
     "http": "http://27.206.72.206:9000"
 }
-
-total_page_number = 1
 
 
 def get_response(mid, page_number, keyword):
@@ -56,14 +54,21 @@ def get_response(mid, page_number, keyword):
     return response.json()
 
 
-# 修正页面数量
-results = get_response(id_tyyh, total_page_number, search_keyword1)
-total_page_number = int(results['data']['page']['count'] / results['data']['page']['ps'] + 1)
+def get_total_page_number(mid, keyword):
+    """
+    obtain total page numbers for each keyword.
+    :param mid: user id number
+    :param keyword: search keyword
+    :return: int
+    """
+    page_result = get_response(mid, "1", keyword)
+    return int(page_result['data']['page']['count'] / page_result['data']['page']['ps'] + 1)
+
 
 # 获取关键词 "乃木坂工事中 坂道之诗" 下的每个页面内容并整合
 # 注意：缺少 EP154 生驹里奈毕业演唱会特集
 bv_dict = {}
-for page_num in reversed(range(1, total_page_number + 1)):
+for page_num in reversed(range(1, get_total_page_number(id_tyyh, search_keyword1) + 1)):
     results = get_response(id_tyyh, page_num, search_keyword1)
 
     for bv_info in reversed(results['data']['list']['vlist']):
