@@ -7,8 +7,8 @@ import json
 import time
 
 id_tyyh = "2301165"  # 天翼羽魂 id
-search_keyword1 = "乃木坂工事中 坂道之诗"
-search_keyword2 = "乃木坂工事中 不够热"
+search_keyword1 = "乃木坂工事中 不够热"
+search_keyword2 = "乃木坂工事中 坂道之诗"
 
 # 请求 URL
 url = "https://api.bilibili.com/x/space/arc/search"
@@ -67,8 +67,8 @@ def get_total_page_number(mid, keyword):
 
 bv_dict = {}
 # 获取关键词 "乃木坂工事中 不够热" 下的每个页面内容并整合
-for page_num in reversed(range(1, get_total_page_number(id_tyyh, search_keyword2) + 1)):
-    results = get_response(id_tyyh, page_num, search_keyword2)
+for page_num in reversed(range(1, get_total_page_number(id_tyyh, search_keyword1) + 1)):
+    results = get_response(id_tyyh, page_num, search_keyword1)
 
     for bv_info in reversed(results['data']['list']['vlist']):
 
@@ -103,8 +103,8 @@ del bv_dict['BV1cx411m7Fj']  # "EP103"，下个关键词再添加
 
 # 获取关键词 "乃木坂工事中 坂道之诗" 下的每个页面内容并整合
 # 注意：缺少 EP154 生驹里奈毕业演唱会特集
-for page_num in reversed(range(1, get_total_page_number(id_tyyh, search_keyword1) + 1)):
-    results = get_response(id_tyyh, page_num, search_keyword1)
+for page_num in reversed(range(1, get_total_page_number(id_tyyh, search_keyword2) + 1)):
+    results = get_response(id_tyyh, page_num, search_keyword2)
 
     for bv_info in reversed(results['data']['list']['vlist']):
 
@@ -118,6 +118,7 @@ for page_num in reversed(range(1, get_total_page_number(id_tyyh, search_keyword1
 
         bv_dict[video_bvid] = [video_ep, video_title, video_created_time, video_play, video_comment, video_danmaku]
 
+# 写入 'bv_info.json'
 with open('resources/bv_info.json', 'w') as bv_file:
     json.dump(bv_dict, bv_file, ensure_ascii=False, indent=4)
 
