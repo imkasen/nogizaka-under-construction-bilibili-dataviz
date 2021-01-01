@@ -65,9 +65,44 @@ def get_total_page_number(mid, keyword):
     return int(page_result['data']['page']['count'] / page_result['data']['page']['ps'] + 1)
 
 
+bv_dict = {}
+# 获取关键词 "乃木坂工事中 不够热" 下的每个页面内容并整合
+for page_num in reversed(range(1, get_total_page_number(id_tyyh, search_keyword2) + 1)):
+    results = get_response(id_tyyh, page_num, search_keyword2)
+
+    for bv_info in reversed(results['data']['list']['vlist']):
+
+        video_bvid = str(bv_info['bvid'])                                                             # BV 号
+        video_title = bv_info['title']                                                                # 标题
+        video_ep = video_title[int(video_title.find('EP')):int(video_title.find('EP')) + 5].rstrip()  # EP
+        if video_ep == "":
+            video_ep = "EP86.5"  # 【乃木坂工事中SP】161229 乃木坂46&欅坂46共同大年会
+        video_created_time = time.asctime(time.localtime(bv_info['created']))                         # 投稿时间
+        video_play = str(bv_info['play'])                                                             # 播放数量
+        video_comment = str(bv_info['comment'])                                                       # 评论数量
+        video_danmaku = str(bv_info['video_review'])                                                  # 弹幕数量
+
+        # 例子：
+        # {
+        #     "BV1ss411D7X5": [
+        #         "EP01",
+        #         "【乃木坂】新番组！乃木坂工事中 EP01 成员提供的有关于西野七濑的情报",
+        #         "Tue Apr 21 11:30:25 2015",
+        #         "106193",
+        #         "74",
+        #         "1607"
+        #     ],
+        #     ...
+        # }
+        bv_dict[video_bvid] = [video_ep, video_title, video_created_time, video_play, video_comment, video_danmaku]
+
+# 手动删除
+del bv_dict['BV1Ts411D7bN']  # "乃木坂在哪完结篇"
+del bv_dict['BV1cx411m7Fj']  # "EP103"，下个关键词再添加
+
+
 # 获取关键词 "乃木坂工事中 坂道之诗" 下的每个页面内容并整合
 # 注意：缺少 EP154 生驹里奈毕业演唱会特集
-bv_dict = {}
 for page_num in reversed(range(1, get_total_page_number(id_tyyh, search_keyword1) + 1)):
     results = get_response(id_tyyh, page_num, search_keyword1)
 
@@ -81,17 +116,6 @@ for page_num in reversed(range(1, get_total_page_number(id_tyyh, search_keyword1
         video_comment = str(bv_info['comment'])                                                       # 评论数量
         video_danmaku = str(bv_info['video_review'])                                                  # 弹幕数量
 
-        # 例子：
-        # {
-        #     'BV1vt411k7At': [
-        #         'EP187',
-        #         '【乃木坂工事中】EP187 一期生四人联合毕业式【坂道之诗】',
-        #         'Mon Dec 24 07:54:13 2018',
-        #         '96786',
-        #         '684',
-        #         '2578'
-        #     ]
-        # }
         bv_dict[video_bvid] = [video_ep, video_title, video_created_time, video_play, video_comment, video_danmaku]
 
 with open('resources/bv_info.json', 'w') as bv_file:
