@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # 获得视频的 BV 号
 
 import requests
@@ -28,14 +30,15 @@ params = {
 }
 
 proxies = {
-     "http": "115.221.246.148:9999"
+    "http": "http://175.44.109.46:9999"
 }
 
 response = requests.get(
     url=url,
     headers=headers,
     params=params,
-    proxies=proxies
+    proxies=proxies,
+    timeout=5
 )
 
 results = response.json()
@@ -61,5 +64,5 @@ for bv_info in reversed(results['data']['list']['vlist']):
 print(bv_dict)
 
 with open('resources/bv_info.json', 'w') as bv_file:
-    json.dump(bv_dict, bv_file, ensure_ascii=False, indent=2)
+    json.dump(bv_dict, bv_file, ensure_ascii=False, indent=4)
 
