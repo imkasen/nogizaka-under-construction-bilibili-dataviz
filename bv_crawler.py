@@ -10,6 +10,9 @@ id_tyyh = "2301165"  # 天翼羽魂 id
 search_keyword1 = "乃木坂工事中 不够热"
 search_keyword2 = "乃木坂工事中 坂道之诗"
 
+id_qyyy = "19553445"  # 千葉幽羽 id
+search_keyword3 = "乃木坂工事中 上行之坂"
+
 # 请求 URL
 url = "https://api.bilibili.com/x/space/arc/search"
 
@@ -21,7 +24,7 @@ headers = {
 
 # 代理
 proxies = {
-    "http": "http://27.206.72.206:9000"
+    "http": "http://120.232.175.244:80"
 }
 
 
@@ -66,6 +69,7 @@ def get_total_page_number(mid, keyword):
 
 
 bv_dict = {}
+# 天翼羽魂
 # 获取关键词 "乃木坂工事中 不够热" 下的每个页面内容并整合
 for page_num in reversed(range(1, get_total_page_number(id_tyyh, search_keyword1) + 1)):
     results = get_response(id_tyyh, page_num, search_keyword1)
@@ -118,7 +122,26 @@ for page_num in reversed(range(1, get_total_page_number(id_tyyh, search_keyword2
 
         bv_dict[video_bvid] = [video_ep, video_title, video_created_time, video_play, video_comment, video_danmaku]
 
+
+# 千葉幽羽
+# 获取关键词 "乃木坂工事中 上行之坂" 下的每个页面内容并整合
+# 注意：EP183 - EP187 重复出现，但仍然保留数据
+for page_num in reversed(range(1, get_total_page_number(id_qyyy, search_keyword3) + 1)):
+    results = get_response(id_qyyy, page_num, search_keyword3)
+
+    for bv_info in reversed(results['data']['list']['vlist']):
+
+        video_bvid = str(bv_info['bvid'])                                                             # BV 号
+        video_title = bv_info['title']                                                                # 标题
+        video_ep = video_title[int(video_title.find('EP')):int(video_title.find('EP')) + 5].rstrip()  # EP
+        video_created_time = time.asctime(time.localtime(bv_info['created']))                         # 投稿时间
+        video_play = str(bv_info['play'])                                                             # 播放数量
+        video_comment = str(bv_info['comment'])                                                       # 评论数量
+        video_danmaku = str(bv_info['video_review'])                                                  # 弹幕数量
+
+        bv_dict[video_bvid] = [video_ep, video_title, video_created_time, video_play, video_comment, video_danmaku]
+
+
 # 写入 'bv_info.json'
 with open('resources/bv_info.json', 'w') as bv_file:
     json.dump(bv_dict, bv_file, ensure_ascii=False, indent=4)
-
