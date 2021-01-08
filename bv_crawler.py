@@ -68,12 +68,13 @@ def get_total_page_number(mid, keyword):
     return int(page_result['data']['page']['count'] / page_result['data']['page']['ps'] + 1)
 
 
-def collect_bv_info(mid, keyword, dictionary):
+def collect_bv_info(mid, keyword, dictionary, dictionary2):
     """
     obtain the information of each video and store it into the dictionary.
     :param mid: user id
     :param keyword: search keyword
-    :param dictionary: to store the information
+    :param dictionary: to store the information in 'BV' order
+    :param dictionary2:  to store the information in 'EP' order
     :return: None
     """
     for page_num in reversed(range(1, get_total_page_number(mid, keyword) + 1)):
@@ -90,7 +91,12 @@ def collect_bv_info(mid, keyword, dictionary):
             video_danmaku = str(bv_info['video_review'])                                                  # 弹幕数量
 
             if video_ep == "":
-                video_ep = "EP86.5"  # 【乃木坂工事中SP】161229 乃木坂46&欅坂46共同大年会
+                if video_bvid == "BV1Ts411D7bN":  # 跳过 "乃木坂在哪完结篇"
+                    continue
+                else:
+                    video_ep = "EP86.5"  # 【乃木坂工事中SP】161229 乃木坂46&欅坂46共同大年会
+            if video_ep == "EP04【":
+                video_ep = video_ep[:4]  # EP04【乃木坂不够热】提取问题
             if video_play == "--":
                 video_play = "-1"    # 【乃木坂工事中】EP40 无播放数据
 
@@ -108,34 +114,58 @@ def collect_bv_info(mid, keyword, dictionary):
             # }
             dictionary[video_bvid] = \
                 [video_ep, video_title, video_created_time, video_play, video_comment, video_danmaku]
+            # 例子：
+            # {
+            #     "EP01": [
+            #         "BV1ss411D7X5",
+            #         "【乃木坂】新番组！乃木坂工事中 EP01 成员提供的有关于西野七濑的情报",
+            #         "2015 Apr 21, Tue",
+            #         "106426",
+            #         "74",
+            #         "1607"
+            #     ],
+            #     ...
+            # }
+            dictionary2[video_ep] = \
+                [video_bvid, video_title, video_created_time, video_play, video_comment, video_danmaku]
 
 
 bv_dict = {}
+ep_dict = {}
 bv_dict2 = {}
+ep_dict2 = {}
 # 天翼羽魂
 # 获取关键词 "乃木坂工事中 不够热" 下的每个页面内容并整合
-collect_bv_info(id_tyyh, search_keyword1, bv_dict)
+collect_bv_info(id_tyyh, search_keyword1, bv_dict, ep_dict)
 
 # 手动删除
-del bv_dict['BV1Ts411D7bN']  # "乃木坂在哪完结篇"
 del bv_dict['BV1cx411m7Fj']  # "EP103"，下个关键词再添加
+del ep_dict['EP103']  # "EP103"，下个关键词再添加
 
 
 # 获取关键词 "乃木坂工事中 坂道之诗" 下的每个页面内容并整合
 # 注意：缺少 EP154 生驹里奈毕业演唱会特集
-collect_bv_info(id_tyyh, search_keyword2, bv_dict)
+collect_bv_info(id_tyyh, search_keyword2, bv_dict, ep_dict)
 
 
 # 千葉幽羽
 # 获取关键词 "乃木坂工事中 上行之坂" 下的每个页面内容并整合
-# 注意：EP183 - EP187 重复出现，但仍然保留数据
-collect_bv_info(id_qyyy, search_keyword3, bv_dict2)
+# 注意：EP183 - EP187 重复，但仍然保留数据
+collect_bv_info(id_qyyy, search_keyword3, bv_dict2, ep_dict2)
 
 
 # 天翼羽魂部分写入 'bv_info.json'
 with open('resources/bv_info.json', 'w') as bv_file:
     json.dump(bv_dict, bv_file, ensure_ascii=False, indent=4)
 
-# 千葉幽羽部分写入 'bv_info2.json'
+# ... 'ep_info.json'
+with open('resources/ep_info.json', 'w') as ep_file:
+    json.dump(ep_dict, ep_file, ensure_ascii=False, indent=4)
+
+# 千葉幽羽部分写入 'bv_info2.json' 和 'ep_info.json'
 with open('resources/bv_info2.json', 'w') as bv_file2:
     json.dump(bv_dict2, bv_file2, ensure_ascii=False, indent=4)
+
+# ... 'ep_info.json'
+with open('resources/ep_info2.json', 'w') as ep_file2:
+    json.dump(ep_dict2, ep_file2, ensure_ascii=False, indent=4)
