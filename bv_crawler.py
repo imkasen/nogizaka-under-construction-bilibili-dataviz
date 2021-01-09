@@ -97,7 +97,7 @@ def collect_bv_info(mid, keyword, ep_list):
             if video_ep == "EP04【":
                 video_ep = video_ep[:4]  # EP04【乃木坂不够热】提取问题
             if video_play == "--":
-                video_play = ""    # 【乃木坂工事中】EP40 无播放数据
+                video_play = None    # 【乃木坂工事中】EP40 无播放数据
 
             video_index = float(video_ep[2:6])                                                            # 序号
 
@@ -139,6 +139,16 @@ del bv_lists[93]  # "EP103"，下个关键词再添加
 # 获取关键词 "乃木坂工事中 坂道之诗" 下的每个页面内容并整合
 # 注意：缺少 EP154 生驹里奈毕业演唱会特集
 collect_bv_info(id_tyyh, search_keyword2, bv_lists)
+bv_lists.append({
+    "Index": 154.0,
+    "EP": "EP154",
+    "BV": "",
+    "Title": "【乃木坂工事中】EP154 生驹里奈毕业演唱会特集【坂道之诗】",
+    "Time": None,
+    "Play": None,
+    "Comment": None,
+    "Danmaku": None,
+})
 
 # 千葉幽羽
 # 获取关键词 "乃木坂工事中 上行之坂" 下的每个页面内容并整合
@@ -156,3 +166,4 @@ with open('resources/bv_info.json', 'w') as bv_file:
 # 千葉幽羽部分写入 'bv_info2.json'
 with open('resources/bv_info2.json', 'w') as bv_file2:
     json.dump(bv_lists2, bv_file2, ensure_ascii=False, indent=4)
+
