@@ -1,13 +1,13 @@
 "use strict";
 
-// bv_info.json
-// 天翼羽魂部分可视化
+// bv_info2.json
+// 千葉幽羽部分可视化
 
-export function drawChart(data) {
+export function drawChart2(data) {
 
   const { Line } = G2Plot;
 
-  const line = new Line('container', {
+  const line = new Line('container2', {
     data: data,
     padding: 'auto',
     xField: 'EP',
@@ -29,3 +29,4 @@ export function drawChart(data) {
 
   line.render();
 }
+
