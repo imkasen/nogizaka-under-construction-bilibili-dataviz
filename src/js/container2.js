@@ -1,32 +1,55 @@
+// 千葉幽羽部分可视化
 "use strict";
 
-// bv_info2.json
-// 千葉幽羽部分可视化
+let myChart = echarts.init(document.getElementById('container2'));
+myChart.showLoading();
 
 export function drawChart2(data) {
+  myChart.hideLoading();
+  console.log(data);
 
-  const { Line } = G2Plot;
-
-  const line = new Line('container2', {
-    data: data,
-    padding: 'auto',
-    xField: 'EP',
-    yField: 'Play',
-    connectNulls: false,
-    point: {
-      size: 3,
-      style: {
-        fill: 'white',
-        stroke: 'purple',
-        lineWidth: 2,
+  let option = {
+    title: {
+      text: "【乃木坂工事中】数据",
+      left: 'center',
+    },
+    tooltip: {},
+    toolbox: {
+      right: '10%',
+      feature: {
+        dataView: {
+          readOnly: true,
+        },
+        magicType: {
+          type: ['line', 'bar'],
+        },
+        saveAsImage: {},
+        restore: {},
       },
     },
-    slider: {
-      start: 0.0,
-      end: 0.5,
+    legend: {},
+    dataset: {
+      source: data,
     },
-  });
+    xAxis: {
+      name: "期数",
+      type: 'category',
+    },
+    yAxis: {
+      name: "播放量",
+      type: 'value',
+    },
+    series: [
+      {
+        type: 'line',
+        encode: {
+          x: "EP",
+          y: "Play",
+        },
+      },
+    ],
+  };
 
-  line.render();
+  myChart.setOption(option);
 }
 

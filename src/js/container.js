@@ -1,31 +1,31 @@
+// 天翼羽魂部分可视化
 "use strict";
 
-// bv_info.json
-// 天翼羽魂部分可视化
+let myChart = echarts.init(document.getElementById('container'));
+myChart.showLoading();
 
 export function drawChart(data) {
+  myChart.hideLoading();
+  console.log(data);
 
-  const { Line } = G2Plot;
-
-  const line = new Line('container', {
-    data: data,
-    padding: 'auto',
-    xField: 'EP',
-    yField: 'Play',
-    connectNulls: false,
-    point: {
-      size: 3,
-      style: {
-        fill: 'white',
-        stroke: 'purple',
-        lineWidth: 2,
-      },
+  let option = {
+    title: {
+      text: 'EChart 入门示例',
     },
-    slider: {
-      start: 0.0,
-      end: 0.5,
+    tooltip: {},
+    legend: {
+      data: ['销量'],
     },
-  });
+    xAxis: {
+      data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"],
+    },
+    yAxis: {},
+    series: [{
+      name: '销量',
+      type: 'bar',
+      data: [5, 20, 36, 10, 10, 20],
+    }],
+  };
 
-  line.render();
+  myChart.setOption(option);
 }

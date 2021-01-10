@@ -7,7 +7,7 @@
 * Linux / macOS
 * Python 3
 * requests
-* AntV G2Plot
+* ECharts
 
 # LICENSE
 
