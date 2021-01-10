@@ -8,17 +8,18 @@ export function drawChart2(data) {
   myChart.hideLoading();
 
   let option = {
-    title: {
-      text: "【乃木坂工事中】数据",
+    title: { // 标题组件
+      text: "【乃木坂工事中】千葉幽羽部分数据",
+      subtext: "2018 年底 ~ 现在",
       left: 'center',
     },
-    tooltip: {
+    tooltip: { // 提示框
       trigger: 'axis',
       axisPointer: {
         type: 'cross',
       },
     },
-    toolbox: {
+    toolbox: { // 工具栏
       right: '7%',
       feature: {
         dataView: {
@@ -31,37 +32,38 @@ export function drawChart2(data) {
         restore: {},
       },
     },
-    grid: {
+    grid: { // 直角坐标系
       right: '10%',
       // containLabel: true,
     },
-    legend: {
+    legend: { // 图例
       right: '20%',
       data: ["播放次数", "弹幕数量", "评论数量"],
     },
-    dataset: {
+    dataset: { // 数据集
       source: data,
     },
-    xAxis: {
+    calculable: true,
+    xAxis: { // X 轴
       // name: "期数",
       type: 'category',
       axisTick: {
-        alignWithLabel: true,
+        alignWithLabel: true, // 刻度线与标签对齐
       },
       axisPointer: {
         type: 'shadow',
       },
     },
-    yAxis: [
+    yAxis: [ // Y 轴
       {
         name: "播放数",
         type: 'value',
         min: 0,
         max: 200000,
-        interval: 40000,
+        interval: 40000, // (max - min) / interval = 5
         position: 'left',
         axisLine: {
-          show: true,
+          show: true, // 显示轴线
         },
         axisLabel: {
           formatter: function (value) {
@@ -94,7 +96,7 @@ export function drawChart2(data) {
         },
       },
     ],
-    dataZoom: [
+    dataZoom: [ // 缩放
       {
         type: 'slider',
         show: true,
@@ -117,6 +119,34 @@ export function drawChart2(data) {
           x: "EP",
           y: "Play",
         },
+        markLine: {
+          data: [
+            { // 中位数标线
+              type: 'median',
+              name: "中位数",
+              label: {
+                position: 'start',
+                formatter: "中位数",
+              },
+            },
+            [ // 最大值标线
+              { // 起点
+                symbol: 'none',
+                x: '10%',
+                yAxis: 'max',
+              },
+              { // 终点
+                type: 'max',
+                name: "最高点",
+                symbol: 'circle',
+                label: {
+                  position: 'end',
+                  formatter: "最大值",
+                },
+              },
+            ],
+          ],
+        },
       },
       {
         name: '弹幕数量',
@@ -126,6 +156,15 @@ export function drawChart2(data) {
           x: "EP",
           y: "Danmaku",
         },
+        markPoint: { // 最大值标点
+          symbolSize: 35,
+          data: [
+            {
+              type: 'max',
+              name: '最多弹幕数',
+            },
+          ],
+        },
       },
       {
         name: '评论数量',
@@ -134,6 +173,15 @@ export function drawChart2(data) {
         encode: {
           x: "EP",
           y: "Comment",
+        },
+        markPoint: { // 最大值标点
+          symbolSize: 35,
+          data: [
+            {
+              type: 'max',
+              name: '最多评论数',
+            },
+          ],
         },
       },
     ],
