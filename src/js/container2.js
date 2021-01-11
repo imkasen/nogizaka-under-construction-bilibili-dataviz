@@ -20,15 +20,47 @@ export function drawChart2(data) {
   myChart.hideLoading();
 
   let option = {
+    aria: { // 无障碍访问
+      enabled: true,
+    },
     title: { // 标题组件
-      text: "【乃木坂工事中】千葉幽羽部分数据",
-      subtext: "2018 年底 ~ 现在",
+      text: "【乃木坂工事中】千葉幽羽部分视频数据",
+      subtext: "2018 年 12 月 ~ 至今",
       left: 'center',
     },
     tooltip: { // 提示框
       trigger: 'axis',
       axisPointer: {
         type: 'cross',
+      },
+      formatter: function (params) { // 自定义
+        /*
+        * 注意：
+        * params[0] 对应 series[0]，以此类推。
+        * 因为 series[0] 用了 data，
+        * 而 series[1|2] 用了 encode，
+        * 所以 params[0].value 返回 number，
+        * 而 params[1|2].value 返回 object。
+        */
+
+        let htmlStr = '';
+
+        htmlStr += params[1].name + "</br>"; // x 轴
+        htmlStr += params[1].value['Title'] + "</br>"; // 标题
+
+        params.forEach((param) => {
+          htmlStr += param.marker + " " + param.seriesName + " : ";
+          if (param.value.constructor === Object) {
+            let param_key = Object.keys(param.value)[param.encode['y'][0]];
+            htmlStr += param.value[param_key];
+          }
+          else {
+            htmlStr += param.value;
+          }
+          htmlStr += "</br>";
+        });
+
+        return htmlStr;
       },
     },
     toolbox: { // 工具栏
@@ -165,7 +197,7 @@ export function drawChart2(data) {
               name: "中位数",
               label: {
                 position: 'start',
-                formatter: "中位数",
+                formatter: "中位播放数",
               },
               lineStyle: {
                 color: '#00B2EE',
