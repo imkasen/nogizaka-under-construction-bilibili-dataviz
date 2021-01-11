@@ -5,6 +5,7 @@
 import requests
 import json
 import time
+import re
 
 id_tyyh = "2301165"  # 天翼羽魂 id
 search_keyword1 = "乃木坂工事中 不够热"
@@ -89,6 +90,10 @@ def collect_bv_info(mid, keyword, ep_list):
             video_comment = bv_info['comment']                                                            # 评论数量
             video_danmaku = bv_info['video_review']                                                       # 弹幕数量
 
+            # 精简标题
+            reg_str = '(【.*?】)|(EP[0-9]+[ ]?)|([，]?乃木坂工事中[ ]?)|([，]?[0-9]{6})'
+            video_title = re.sub(reg_str, '', video_title).strip()
+
             if video_ep == "":
                 if video_bvid == "BV1Ts411D7bN":  # 跳过 "乃木坂在哪完结篇"
                     continue
@@ -143,7 +148,7 @@ bv_lists.append({
     "Index": 154.0,
     "EP": "EP154",
     "BV": "",
-    "Title": "【乃木坂工事中】EP154 生驹里奈毕业演唱会特集【坂道之诗】",
+    "Title": "生驹里奈毕业演唱会特集",
     "Time": None,
     "Play": None,
     "Comment": None,
