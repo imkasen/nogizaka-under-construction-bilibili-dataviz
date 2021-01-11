@@ -13,6 +13,21 @@ let interval_danmaku = max_danmaku / div_num;
 let max_comment = 1000;
 let interval_comment = max_comment / div_num;
 
+// 水印
+let waterMarkText = 'github.com/Kasen96';
+let watermark_canvas = document.createElement('canvas');
+let ctx = watermark_canvas.getContext('2d');
+watermark_canvas.width = 100;
+watermark_canvas.height = 100;
+ctx.textAlign = 'center';
+ctx.textBaseline = 'middle';
+ctx.globalAlpha = 0.1;
+ctx.font = '12px Microsoft Yahei';
+ctx.translate(50, 50);
+ctx.rotate(-Math.PI / 4);
+ctx.fillText(waterMarkText, 0, 0);
+
+// ECharts
 let myChart = echarts.init(document.getElementById('container2'));
 myChart.showLoading();
 
@@ -72,7 +87,13 @@ export function drawChart2(data) {
         magicType: {
           type: ['line', 'bar'],
         },
-        saveAsImage: {},
+        saveAsImage: {
+          backgroundColor: { // 下载水印
+            type: 'pattern',
+            image: watermark_canvas,
+            repeat: 'repeat',
+          },
+        },
         restore: {},
       },
     },
