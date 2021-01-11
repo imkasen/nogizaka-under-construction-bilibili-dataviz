@@ -1,6 +1,18 @@
 // 千葉幽羽部分可视化
 "use strict";
 
+// 纵坐标分割线设置
+let div_num = 5;
+// 播放数
+let max_play = 200000;
+let interval_play = max_play / div_num;
+// 弹幕数
+let max_danmaku = 6000;
+let interval_danmaku = max_danmaku / div_num;
+// 评论数
+let max_comment = 1000;
+let interval_comment = max_comment / div_num;
+
 let myChart = echarts.init(document.getElementById('container2'));
 myChart.showLoading();
 
@@ -20,7 +32,7 @@ export function drawChart2(data) {
       },
     },
     toolbox: { // 工具栏
-      right: '7%',
+      right: '11%',
       feature: {
         dataView: {
           readOnly: true,
@@ -59,8 +71,8 @@ export function drawChart2(data) {
         name: "播放数",
         type: 'value',
         min: 0,
-        max: 200000,
-        interval: 40000, // (max - min) / interval = 5
+        max: max_play,
+        interval: interval_play,
         position: 'left',
         axisLine: {
           show: true, // 显示轴线
@@ -76,8 +88,8 @@ export function drawChart2(data) {
         name: "弹幕数",
         type: 'value',
         min: 0,
-        max: 6000,
-        interval: 1200,
+        max: max_danmaku,
+        interval: interval_danmaku,
         position: 'right',
         axisLine: {
           show: true,
@@ -87,8 +99,8 @@ export function drawChart2(data) {
         name: "评论数",
         type: 'value',
         min: 0,
-        max: 1000,
-        interval: 200,
+        max: max_comment,
+        interval: interval_comment,
         position: 'right',
         offset: 70,
         axisLine: {
@@ -115,9 +127,36 @@ export function drawChart2(data) {
         name: '播放次数',
         type: 'line',
         yAxisIndex: 0,
-        encode: {
-          x: "EP",
-          y: "Play",
+        // encode: {
+        //   x: "EP",
+        //   y: "Play",
+        // },
+        data: data.map(function (item) {
+          return item["Play"];
+        }),
+        itemStyle: {  // 折线拐点样式
+          color: '#BA55D3',
+        },
+        lineStyle: { // 折线样式
+          color: { // 渐变色
+            type: 'linear',
+            x: 0,
+            y: 0,
+            x2: 0,
+            y2: 1,
+            colorStops: [
+              {
+                offset: 0, color: '#8700b3', // 顶部颜色
+              },
+              {
+                offset: 0.5, color: '#BA55D3',
+              },
+              {
+                offset: 1, color: '#fbccff', // 底部颜色
+              }
+            ],
+            global: false,
+          },
         },
         markLine: {
           data: [
@@ -128,20 +167,26 @@ export function drawChart2(data) {
                 position: 'start',
                 formatter: "中位数",
               },
+              lineStyle: {
+                color: '#00B2EE',
+              },
             },
             [ // 最大值标线
               { // 起点
-                symbol: 'none',
+                symbol: 'circle',
                 x: '10%',
                 yAxis: 'max',
+                label: {
+                  position: 'start',
+                  formatter: "最多播放",
+                },
               },
               { // 终点
                 type: 'max',
                 name: "最高点",
-                symbol: 'circle',
-                label: {
-                  position: 'end',
-                  formatter: "最大值",
+                symbol: 'none',
+                lineStyle: {
+                  color: '#00B2EE',
                 },
               },
             ],
@@ -155,6 +200,9 @@ export function drawChart2(data) {
         encode: {
           x: "EP",
           y: "Danmaku",
+        },
+        itemStyle: {
+          color: '#66CD00',
         },
         markPoint: { // 最大值标点
           symbolSize: 35,
@@ -173,6 +221,9 @@ export function drawChart2(data) {
         encode: {
           x: "EP",
           y: "Comment",
+        },
+        itemStyle: {
+          color: '#EEC900',
         },
         markPoint: { // 最大值标点
           symbolSize: 35,
