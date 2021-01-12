@@ -1,6 +1,8 @@
 // 千葉幽羽部分可视化
 "use strict";
 
+import {getWaterMark} from "./watermark.js";
+
 // 纵坐标分割线设置
 let div_num = 5;
 // 播放数
@@ -12,20 +14,6 @@ let interval_danmaku = max_danmaku / div_num;
 // 评论数
 let max_comment = 1000;
 let interval_comment = max_comment / div_num;
-
-// 水印
-let waterMarkText = 'github.com/Kasen96';
-let watermark_canvas = document.createElement('canvas');
-let ctx = watermark_canvas.getContext('2d');
-watermark_canvas.width = 100;
-watermark_canvas.height = 100;
-ctx.textAlign = 'center';
-ctx.textBaseline = 'middle';
-ctx.globalAlpha = 0.1;
-ctx.font = '12px Microsoft Yahei';
-ctx.translate(50, 50);
-ctx.rotate(-Math.PI / 4);
-ctx.fillText(waterMarkText, 0, 0);
 
 // 初始化 ECharts
 let myChart = echarts.init(document.getElementById('container2'));
@@ -39,7 +27,7 @@ export function drawChart2(data) {
     aria: { // 无障碍访问
       enabled: true,
     },
-    title: { // 标题组件
+    title: { // 标题
       text: "【乃木坂工事中】千葉幽羽部分视频数据",
       subtext: "2018 年 12 月 ~ 至今",
       left: 'center',
@@ -92,7 +80,7 @@ export function drawChart2(data) {
         saveAsImage: {
           backgroundColor: { // 下载水印
             type: 'pattern',
-            image: watermark_canvas,
+            image: getWaterMark(),
             repeat: 'repeat',
           },
         },
@@ -111,7 +99,7 @@ export function drawChart2(data) {
       source: data,
     },
     calculable: true,
-    xAxis: { // X 轴
+    xAxis: { // X 轴设置
       // name: "期数",
       type: 'category',
       axisTick: {
@@ -121,7 +109,7 @@ export function drawChart2(data) {
         type: 'shadow',
       },
     },
-    yAxis: [ // Y 轴
+    yAxis: [ // Y 轴设置
       {
         name: "播放数",
         type: 'value',
@@ -298,15 +286,17 @@ export function drawChart2(data) {
 
   // 点击事件
   myChart.on('click', function (params) {
+    // 点击折线拐点，柱状图跳转至相关网页
+    let url = "https://www.bilibili.com/video/";
     if (params.componentType === "series"){
       if (params.seriesType === "bar") {
         let bv_id = params.data["BV"];
-        window.open("https://www.bilibili.com/video/" + bv_id);
+        window.open(url + bv_id);
       }
       else if (params.seriesType === "line") {
         let index = params.dataIndex;
         let bv_id = data.map((item) => {return item["BV"];})[index];
-        window.open("https://www.bilibili.com/video/" + bv_id);
+        window.open(url + bv_id);
       }
     }
   });
