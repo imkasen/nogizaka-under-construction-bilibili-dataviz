@@ -27,10 +27,11 @@ ctx.translate(50, 50);
 ctx.rotate(-Math.PI / 4);
 ctx.fillText(waterMarkText, 0, 0);
 
-// ECharts
+// 初始化 ECharts
 let myChart = echarts.init(document.getElementById('container2'));
 myChart.showLoading();
 
+// 配置 ECharts
 export function drawChart2(data) {
   myChart.hideLoading();
 
@@ -60,8 +61,9 @@ export function drawChart2(data) {
 
         let htmlStr = '';
 
-        htmlStr += params[1].name + "</br>"; // x 轴
+        htmlStr += params[1].name + "</br>"; // EP 数，与 X 轴相同
         htmlStr += params[1].value['Title'] + "</br>"; // 标题
+        // htmlStr += params[1].value['Time'] + "</br>"; // 投稿时间
 
         params.forEach((param) => {
           htmlStr += param.marker + " " + param.seriesName + " : ";
@@ -76,7 +78,7 @@ export function drawChart2(data) {
         });
 
         return htmlStr;
-      },
+      }
     },
     toolbox: { // 工具栏
       right: '11%',
@@ -134,7 +136,7 @@ export function drawChart2(data) {
           formatter: function (value) {
             value = +value;
             return isFinite(value) ? echarts.format.addCommas(+value / 1000) + 'K' : '';
-          },
+          }
         },
       },
       {
@@ -291,6 +293,22 @@ export function drawChart2(data) {
     ],
   };
 
+  // 显示图表
   myChart.setOption(option);
+
+  // 点击事件
+  myChart.on('click', function (params) {
+    if (params.componentType === "series"){
+      if (params.seriesType === "bar") {
+        let bv_id = params.data["BV"];
+        window.open("https://www.bilibili.com/video/" + bv_id);
+      }
+      else if (params.seriesType === "line") {
+        let index = params.dataIndex;
+        let bv_id = data.map((item) => {return item["BV"];})[index];
+        window.open("https://www.bilibili.com/video/" + bv_id);
+      }
+    }
+  });
 }
 
