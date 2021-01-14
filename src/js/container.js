@@ -28,7 +28,7 @@ export function drawChart(data) {
       enabled: true,
     },
     title: { // 标题
-      text: "【乃木坂工事中】天翼羽魂部分视频数据",
+      // text: "【乃木坂工事中】天翼羽魂部分视频数据",
       subtext: "2015 年 4 月 ~ 2018 年 12 月",
       left: 'center',
     },
@@ -78,7 +78,7 @@ export function drawChart(data) {
       }
     },
     toolbox: {
-      right: '11%',
+      right: '15%',
       feature: {
         dataView: {
           readOnly: true,
@@ -101,7 +101,7 @@ export function drawChart(data) {
       // containLabel: true,
     },
     legend: { // 图例
-      right: '20%',
+      left: '10%',
       data: ["播放次数", "弹幕数量", "评论数量"],
     },
     dataset: { // 数据集
