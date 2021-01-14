@@ -28,7 +28,7 @@ export function drawChart2(data) {
       enabled: true,
     },
     title: { // 标题
-      text: "【乃木坂工事中】千葉幽羽部分视频数据",
+      // text: "【乃木坂工事中】千葉幽羽部分视频数据",
       subtext: "2018 年 12 月 ~ 至今",
       left: 'center',
     },
@@ -69,7 +69,7 @@ export function drawChart2(data) {
       }
     },
     toolbox: { // 工具栏
-      right: '11%',
+      right: '15%',
       feature: {
         dataView: {
           readOnly: true,
@@ -78,6 +78,8 @@ export function drawChart2(data) {
           type: ['line', 'bar'],
         },
         saveAsImage: {
+          name: "【乃木坂工事中】千葉幽羽部分视频数据",
+          pixelRatio: 2,
           backgroundColor: { // 下载水印
             type: 'pattern',
             image: getWaterMark(),
@@ -92,7 +94,7 @@ export function drawChart2(data) {
       // containLabel: true,
     },
     legend: { // 图例
-      right: '20%',
+      left: '10%',
       data: ["播放次数", "弹幕数量", "评论数量"],
     },
     dataset: { // 数据集
@@ -156,13 +158,13 @@ export function drawChart2(data) {
         type: 'slider',
         show: true,
         start: 0,
-        end: 25,
+        end: 10,
       },
       {
-        type: 'inside',
-        show: true,
-        start: 0,
-        end: 25,
+        // type: 'inside',
+        // show: true,
+        // start: 0,
+        // end: 25,
       }
     ],
     series: [
