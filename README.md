@@ -1,4 +1,4 @@
-# BiliBili「乃木坂工事中」统计信息可视化
+# BiliBili「乃木坂工事中」熟肉数据可视化
 
 偶然看到一个很不错的乃木板工事中可视化 [作品](https://github.com/DesertsX/nogizaka-under-construction-dataviz) ，很可惜它展示的信息不全面，于是决定做一个更加详细的版本。
 
@@ -8,6 +8,12 @@
 * Python 3
   * requests
 * ECharts
+
+# 网址
+
+网站[链接](https://kasen96.github.io/Nogizaka-Under-Construction-BiliBili-Info-Visualization/)。
+
+每天中午 12 点自动更新数据。
 
 # LICENSE
 
