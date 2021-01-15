@@ -1,0 +1,39 @@
+name: 'Python Crawler Bot'
+
+on:
+  push:
+  schedule:
+    # 每天 12 点运行
+    - cron: '0 12 * * *'
+
+jobs:
+  # a single job
+  bot:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+      - name: Install requirements
+        run: |
+          python3 -m pip install --upgrade pip
+          pip3 install -r ./requirements.txt
+      - name: running
+        run: python3 ./bv_crawler.py
+      - name: Commit
+        env:
+          GIT_NAME: action-bot
+          GIT_EMAIL: action-bot@users.noreply.github.com
+        run: |
+          git config --local user.name $GIT_NAME
+          git config --local user.email $GIT_EMAIL
+          git add .
+          git commit -m "Github action update at `date '+%Y-%m-%d %H:%M:%S'`."
+      - name: Push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
