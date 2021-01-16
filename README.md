@@ -13,7 +13,7 @@
 
 网站[链接](https://kasen96.github.io/Nogizaka-Under-Construction-BiliBili-Info-Visualization/)。
 
-每天中午 12 点自动更新数据。
+每周日中午 12 点自动更新数据。
 
 # LICENSE
 

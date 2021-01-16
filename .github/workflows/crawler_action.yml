@@ -1,9 +1,9 @@
-name: 'Python Crawler Bot'
+name: Python Crawler Bot
 
 on:
   schedule:
-    # 每天 12 点运行
-    - cron: '0 4 * * *'
+    # 每周日 12 点运行
+    - cron: '0 4 * * 0'
 
 env:
   TZ: Asia/Shanghai
@@ -23,7 +23,7 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip
           pip3 install -r ./requirements.txt
-      - name: running
+      - name: Running
         run: python3 ./bv_crawler.py
       - name: Commit
         env:
