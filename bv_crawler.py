@@ -5,6 +5,7 @@
 import requests
 import json
 import time
+import math
 import re
 
 id_tyyh = "2301165"  # 天翼羽魂 id
@@ -66,7 +67,7 @@ def get_total_page_number(mid, keyword):
     :return: int
     """
     page_result = get_response(mid, "1", keyword)
-    return int(page_result['data']['page']['count'] / page_result['data']['page']['ps'] + 1)
+    return math.ceil(page_result['data']['page']['count'] / page_result['data']['page']['ps'])
 
 
 def collect_bv_info(mid, keyword, ep_list):
