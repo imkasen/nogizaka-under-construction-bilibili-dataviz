@@ -88,7 +88,7 @@ export function drawChart(data) {
         },
         saveAsImage: {
           name: "【乃木坂工事中】天翼羽魂部分视频数据",
-          pixelRatio: 2,
+          pixelRatio: 1,
           backgroundColor: { // 下载水印
             type: 'pattern',
             image: getWaterMark(),

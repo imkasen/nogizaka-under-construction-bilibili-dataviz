@@ -79,7 +79,7 @@ export function drawChart2(data) {
         },
         saveAsImage: {
           name: "【乃木坂工事中】千葉幽羽部分视频数据",
-          pixelRatio: 2,
+          pixelRatio: 1,
           backgroundColor: { // 下载水印
             type: 'pattern',
             image: getWaterMark(),
