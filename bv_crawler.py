@@ -26,7 +26,7 @@ headers = {
 
 # 代理
 proxies = {
-    "http": "http://120.232.175.244:80"
+    "http": ""
 }
 
 
@@ -52,7 +52,7 @@ def get_response(mid, page_number, keyword):
         url=url,
         headers=headers,
         params=params,
-        proxies=proxies,
+        # proxies=proxies,
         timeout=5
     )
 
