@@ -24,7 +24,7 @@ jobs:
           python3 -m pip install --upgrade pip
           pip3 install -r ./requirements.txt
       - name: Running
-        run: python3 ./bv_crawler.py
+        run: python3 ./crawlers/bv_crawler.py
       - name: Commit
         env:
           GIT_NAME: GitHub Actions[Bot]

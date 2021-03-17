@@ -166,10 +166,10 @@ bv_lists.sort(key=lambda k: k.get("Index"))
 bv_lists2.sort(key=lambda k: k.get("Index"))
 
 # 天翼羽魂部分写入 'bv_info.json'
-with open('resources/bv_info.json', 'w') as bv_file:
+with open('../resources/bv_info.json', 'w') as bv_file:
     json.dump(bv_lists, bv_file, ensure_ascii=False, indent=4)
 
 # 千葉幽羽部分写入 'bv_info2.json'
-with open('resources/bv_info2.json', 'w') as bv_file2:
+with open('../resources/bv_info2.json', 'w') as bv_file2:
     json.dump(bv_lists2, bv_file2, ensure_ascii=False, indent=4)
 
