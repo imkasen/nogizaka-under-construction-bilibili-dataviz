@@ -6,6 +6,8 @@
 import requests
 import json
 from bs4 import BeautifulSoup
+import re
+import jieba
 
 cid_url = "https://api.bilibili.com/x/player/pagelist"
 danmaku_url = "https://comment.bilibili.com/"
@@ -52,10 +54,16 @@ def get_danmaku(cid):
     # <d p="...">xxx</d>
     # ...
     results = soup.find_all('d')
-    barrages = [barrage.text for barrage in results]  # list
-    barrages = [barrage.upper() for barrage in barrages]
+    barrages = [barrage.text.upper() for barrage in results]
     barrages = [barrage.replace(' ', '') for barrage in barrages]  # remove blank
-    return barrages
+    reg_str = '([\\W]+)|([0-9]+)'
+    barrages = [re.sub(reg_str, '', barrage).replace('_', '') for barrage in barrages]  # remove punctuation, numbers, _
+    barrages = [barrage for barrage in barrages if len(barrage) > 1]  # not empty, length > 1
+    barrages_list = []
+    for barrage in barrages:
+        barrages_list.extend(jieba.lcut(barrage))
+    barrages_list = [barrage for barrage in barrages_list if len(barrage) > 1]  # length > 1
+    return barrages_list
 
 
 # get danmaku of the last video
@@ -63,8 +71,9 @@ with open('../resources/bv_info2.json', 'r') as read_file:
     bv_data = json.load(read_file)
     last_bv = bv_data[-1]['BV']
     last_ep = bv_data[-1]['EP']
+    last_title = bv_data[-1]['Title']
     cid_data = get_cid_response(last_bv)
     last_cid = cid_data['data'][0]['cid']  # p=1
     danmaku = get_danmaku(last_cid)
     with open(f'../resources/danmaku/{last_ep}.json', 'w') as write_file:
-        json.dump(danmaku, write_file, ensure_ascii=False, indent=4)
+        json.dump([last_title, danmaku], write_file, ensure_ascii=False, indent=4)
