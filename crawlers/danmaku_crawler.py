@@ -67,7 +67,7 @@ def get_danmaku(cid):
     reg_str2 = '([哈]+)|(字幕)|(感谢)'  # remove "哈哈"，"感谢字幕组"
     barrages_list = [re.sub(reg_str2, '', barrage) for barrage in barrages_list]
     barrages_list = [barrage for barrage in barrages_list if len(barrage) > 1]
-    return Counter(barrages_list)
+    return dict(Counter(barrages_list).most_common(len(barrages_list)))
 
 
 # get danmaku of the last video
