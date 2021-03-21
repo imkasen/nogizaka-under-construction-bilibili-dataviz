@@ -71,7 +71,7 @@ def get_danmaku(cid):
 
 
 # get danmaku of the last video
-with open('../resources/bv_info2.json', 'r') as read_file:
+with open('resources/bv_info2.json', 'r') as read_file:
     bv_data = json.load(read_file)
     last_bv = bv_data[-1]['BV']
     last_ep = bv_data[-1]['EP']
@@ -79,5 +79,5 @@ with open('../resources/bv_info2.json', 'r') as read_file:
     cid_data = get_cid_response(last_bv)
     last_cid = cid_data['data'][0]['cid']  # p=1
     danmaku = get_danmaku(last_cid)
-    with open(f'../resources/danmaku/{last_ep}.json', 'w') as write_file:
+    with open(f'resources/danmaku/{last_ep}.json', 'w') as write_file:
         json.dump([last_title, danmaku], write_file, ensure_ascii=False, indent=4)
