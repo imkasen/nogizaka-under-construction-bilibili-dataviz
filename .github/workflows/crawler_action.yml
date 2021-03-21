@@ -1,7 +1,6 @@
 name: Python Crawler Bot
 
 on:
-  push:
   schedule:
     # 每周日 12 点运行
     - cron: '0 4 * * 0'

@@ -7,7 +7,9 @@
 * Linux / macOS
 * Python 3
   * requests
-* ECharts
+  * beautifulsoup4
+  * jieba
+* ECharts 5
 
 # 网址
 
