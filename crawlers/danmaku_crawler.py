@@ -8,6 +8,7 @@ import json
 from bs4 import BeautifulSoup
 import re
 import jieba
+from collections import Counter
 
 cid_url = "https://api.bilibili.com/x/player/pagelist"
 danmaku_url = "https://comment.bilibili.com/"
@@ -63,7 +64,10 @@ def get_danmaku(cid):
     for barrage in barrages:
         barrages_list.extend(jieba.lcut(barrage))
     barrages_list = [barrage for barrage in barrages_list if len(barrage) > 1]  # length > 1
-    return barrages_list
+    reg_str2 = '([哈]+)|(字幕)|(感谢)'  # remove "哈哈"，"感谢字幕组"
+    barrages_list = [re.sub(reg_str2, '', barrage) for barrage in barrages_list]
+    barrages_list = [barrage for barrage in barrages_list if len(barrage) > 1]
+    return Counter(barrages_list)
 
 
 # get danmaku of the last video
