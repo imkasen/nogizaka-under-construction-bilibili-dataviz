@@ -46,28 +46,37 @@ def get_cid_response(bvid):
 
 
 def get_danmaku(cid):
-    total_url = danmaku_url + str(cid) + ".xml"
-    response = requests.get(total_url)
-    response.encoding = 'utf8'
-    soup = BeautifulSoup(response.text, 'lxml')
+    """
+    use cid to get the barrage and count the word frequency.
+    :param cid:
+    :return: dict
+    """
+    # 弹幕文件格式
     # .../<cid>.xml
     # ...
     # <d p="...">xxx</d>
     # ...
+    # 请求并提取弹幕
+    total_url = danmaku_url + str(cid) + ".xml"
+    response = requests.get(total_url)
+    response.encoding = 'utf8'
+    soup = BeautifulSoup(response.text, 'lxml')
     results = soup.find_all('d')
-    barrages = [barrage.text.upper() for barrage in results]
-    barrages = [barrage.replace(' ', '') for barrage in barrages]  # remove blank
-    reg_str = '([\\W]+)|([0-9]+)'
-    barrages = [re.sub(reg_str, '', barrage).replace('_', '') for barrage in barrages]  # remove punctuation, numbers, _
-    barrages = [barrage for barrage in barrages if len(barrage) > 1]  # not empty, length > 1
+    barrages = [barrage.text for barrage in results]
+    # 格式化
+    barrages = [barrage.upper().replace(' ', '') for barrage in barrages]  # 大写，删除弹幕中的空格
+    reg_str = '([\\W]+)|([0-9]+)|(哈{2,})|(字幕组)|(感谢)|(W{2,})|(H{2,})|(啊{2,})'
+    barrages = [re.sub(reg_str, '', barrage).replace('_', '') for barrage in barrages]  # 删除标点、数字、下划线等
+    barrages = [barrage for barrage in barrages if len(barrage) > 1]  # 删除空元素
+    # 结巴分词
     barrages_list = []
     for barrage in barrages:
         barrages_list.extend(jieba.lcut(barrage))
-    barrages_list = [barrage for barrage in barrages_list if len(barrage) > 1]  # length > 1
-    reg_str2 = '([哈]+)|(字幕)|(感谢)'  # remove "哈哈"，"感谢字幕组"
-    barrages_list = [re.sub(reg_str2, '', barrage) for barrage in barrages_list]
-    barrages_list = [barrage for barrage in barrages_list if len(barrage) > 1]
-    return dict(Counter(barrages_list).most_common(len(barrages_list)))
+    barrages_list = [barrage for barrage in barrages_list if len(barrage) > 1]  # 删除单个汉字
+    # 统计词频
+    danmaku_dict = dict(Counter(barrages_list).most_common(len(barrages_list)))
+    danmaku_dict = {k: v for k, v in danmaku_dict.items() if v > 1}  # 删除只出现一次的单词
+    return danmaku_dict
 
 
 # get danmaku of the last video
