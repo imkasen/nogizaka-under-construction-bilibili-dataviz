@@ -14,8 +14,10 @@
         <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap) -->
         <link href="src/css/styles.css" rel="stylesheet" />
-        <!-- 引入 EChart -->
+        <!-- 引入 ECharts -->
         <script src="https://cdn.jsdelivr.net/npm/echarts@5.0.2/dist/echarts.min.js"></script>
+        <!-- 引入 ECharts WordCloud 2 -->
+        <script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@2.0.0/dist/echarts-wordcloud.min.js"></script>
     </head>
     <body id="page-top">
         <!--
@@ -30,8 +32,7 @@
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">关于</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#tyyh">天翼羽魂</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#qyyy">千葉幽羽</a></li>
-<!--                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#tyyh_wordcloud">词云图：天翼羽魂</a></li>-->
-<!--                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#qyyy_wordcloud">词云图：千葉幽羽</a></li>-->
+<!--                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#wordcloud">词云图</a></li>-->
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#tech">技术栈</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#declaration">声明</a></li>
                 </ul>
@@ -128,26 +129,12 @@
                 </div>
             </section>
             <hr class="m-0" />
-
-            <!-- 词云图要等 ECharts 更新 5.0.1 版本之后，似乎是因为插件有兼容问题 -->
-            <!-- 天翼羽魂_词云图 -->
-<!--            <section class="resume-section" id="tyyh_wordcloud">-->
+            <!-- 词云图 -->
+<!--            <section class="resume-section" id="wordcloud">-->
 <!--                <div class="resume-section-content">-->
-<!--                    <h2 class="mb-5">天翼羽魂部分的词云图 WordCloud</h2>-->
+<!--                    <h2 class="mb-5">词云图 WordCloud</h2>-->
 <!--                    <p class="mb-5">-->
-<!--                        根据每个 EP 的弹幕和评论信息生成词云图-->
-<!--                        <br/>-->
-<!--                        先开个坑，等有空再说吧...-->
-<!--                    </p>-->
-<!--                </div>-->
-<!--            </section>-->
-<!--            <hr class="m-0" />-->
-            <!-- 千葉幽羽_词云图 -->
-<!--            <section class="resume-section" id="qyyy_wordcloud">-->
-<!--                <div class="resume-section-content">-->
-<!--                    <h2 class="mb-5">千葉幽羽部分的词云图 WordCloud</h2>-->
-<!--                    <p class="mb-5">-->
-<!--                        根据每个 EP 的弹幕和评论信息生成词云图-->
+<!--                        根据 EP 的弹幕信息生成词云图-->
 <!--                        <br/>-->
 <!--                        先开个坑，等有空再说吧...-->
 <!--                    </p>-->
