@@ -9,7 +9,8 @@
   * requests
   * beautifulsoup4
   * jieba
-* ECharts 5
+* [ECharts 5](https://echarts.apache.org/zh/index.html)
+* [ECharts-WordCloud Version 2](https://github.com/ecomfe/echarts-wordcloud)
 
 # 网址
 

@@ -65,7 +65,7 @@ def get_danmaku(cid):
     barrages = [barrage.text for barrage in results]
     # 格式化
     barrages = [barrage.upper().replace(' ', '') for barrage in barrages]  # 大写，删除弹幕中的空格
-    reg_str = '([\\W]+)|([0-9]+)|(哈{2,})|(字幕组)|(感谢)|(W{2,})|(H{2,})|(啊{2,})'
+    reg_str = '([\\W]+)|([0-9]+)|(哈{2,})|(字幕组)|(字幕)|(感谢)|(W{2,})|(H{2,})|(啊{2,})'
     barrages = [re.sub(reg_str, '', barrage).replace('_', '') for barrage in barrages]  # 删除标点、数字、下划线等
     barrages = [barrage for barrage in barrages if len(barrage) > 1]  # 删除空元素
     # 结巴分词
@@ -75,7 +75,7 @@ def get_danmaku(cid):
     barrages_list = [barrage for barrage in barrages_list if len(barrage) > 1]  # 删除单个汉字
     # 统计词频
     danmaku_dict = dict(Counter(barrages_list).most_common(len(barrages_list)))
-    danmaku_dict = {k: v for k, v in danmaku_dict.items() if v > 1}  # 删除只出现一次的单词
+    danmaku_dict = {k: v for k, v in danmaku_dict.items() if v > 2}  # 控制频率：删除只出现两次的单词
     return danmaku_dict
 
 

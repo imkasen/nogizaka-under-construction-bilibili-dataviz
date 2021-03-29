@@ -61,5 +61,6 @@ fetchURLs().then((bv_data) => {
     return fetch(`resources/danmaku/EP${ep_num}.json`)
         .then(res => res.json());
 }).then((danmaku_data) => {
-    drawChart3(danmaku_data);
+    $('.wordcloud_title').html(danmaku_data[0]); // 插入标题
+    drawChart3(danmaku_data[1]);
 });
