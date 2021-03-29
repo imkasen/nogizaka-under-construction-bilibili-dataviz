@@ -291,8 +291,6 @@ export function drawChart(data) {
     // 显示图表
     myChart.setOption(option);
 
-    console.log(window.location.href);
-
     // 点击事件
     myChart.on('click', function (params) {
         // 点击折线拐点，柱状图跳转至相关网页
