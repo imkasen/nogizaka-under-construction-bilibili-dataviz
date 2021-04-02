@@ -27,7 +27,7 @@ export function drawChart3(data) {
             height: '100%',
             // right: null,
             // bottom: null,
-            sizeRange: [10, 200],
+            sizeRange: [20, 200],
             rotationRange: [-90, 90],
             rotationStep: 30,
             gridSize: 5,

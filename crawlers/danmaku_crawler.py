@@ -69,13 +69,14 @@ def get_danmaku(cid):
     barrages = [re.sub(reg_str, '', barrage).replace('_', '') for barrage in barrages]  # 删除标点、数字、下划线等
     barrages = [barrage for barrage in barrages if len(barrage) > 1]  # 删除空元素
     # 结巴分词
+    jieba.load_userdict('resources/nogi46_names.txt')
     barrages_list = []
     for barrage in barrages:
         barrages_list.extend(jieba.lcut(barrage))
     barrages_list = [barrage for barrage in barrages_list if len(barrage) > 1]  # 删除单个汉字
     # 统计词频
     danmaku_dict = dict(Counter(barrages_list).most_common(len(barrages_list)))
-    danmaku_dict = {k: v for k, v in danmaku_dict.items() if v > 2}  # 控制频率：删除只出现两次的单词
+    danmaku_dict = {k: v for k, v in danmaku_dict.items() if v > 2}  # 控制频率：删除只出现两次及以下的单词
     return danmaku_dict
 
 
