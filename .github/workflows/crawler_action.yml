@@ -2,8 +2,7 @@ name: Python Crawler Bot
 
 on:
   schedule:
-    # 每周日 12 点运行
-    - cron: '0 4 * * 0'
+    - cron: '0 0 * * *'
 
 env:
   TZ: Asia/Shanghai
