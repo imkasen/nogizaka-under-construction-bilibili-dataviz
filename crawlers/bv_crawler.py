@@ -9,11 +9,11 @@ import math
 import re
 
 id_tyyh = "2301165"  # 天翼羽魂 id
-search_keyword1 = "乃木坂工事中 不够热"
+search_keyword1 = "乃木坂工事中 EP 不够热"
 search_keyword2 = "乃木坂工事中 坂道之诗"
 
 id_qyyy = "19553445"  # 千葉幽羽 id
-search_keyword3 = "乃木坂工事中 上行之坂"
+search_keyword3 = "乃木坂工事中 EP 上行之坂"
 
 # 请求 URL
 url = "https://api.bilibili.com/x/space/arc/search"
@@ -91,15 +91,17 @@ def collect_bv_info(mid, keyword, ep_list):
             video_comment = bv_info['comment']                                                            # 评论数量
             video_danmaku = bv_info['video_review']                                                       # 弹幕数量
 
+            # 跳过 "NOGIROOM"，"NOGIBINGO"，"乃木坂在哪儿"
+            excluded_title_list = ["NOGI", "在哪"]
+            if any([title in video_title for title in excluded_title_list]):
+                continue
+
             # 精简标题
             reg_str = '(【.*?】)|(EP[0-9]+[ ]?)|([，]?乃木坂工事中[ ]?)|([，]?[0-9]{6})'
             video_title = re.sub(reg_str, '', video_title).strip()
 
             if video_ep == "":
-                if video_bvid == "BV1Ts411D7bN":  # 跳过 "乃木坂在哪完结篇"
-                    continue
-                else:
-                    video_ep = "EP86.5"  # 【乃木坂工事中SP】161229 乃木坂46&欅坂46共同大年会
+                video_ep = "EP86.5"  # 【乃木坂工事中SP】161229 乃木坂46&欅坂46共同大年会
             if video_ep == "EP04【":
                 video_ep = video_ep[:4]  # EP04【乃木坂不够热】提取问题
             if video_play == "--":
@@ -136,7 +138,7 @@ def collect_bv_info(mid, keyword, ep_list):
 bv_lists = []
 bv_lists2 = []
 # 天翼羽魂
-# 获取关键词 "乃木坂工事中 不够热" 下的每个页面内容并整合
+# 获取关键词 "乃木坂工事中 EP 不够热" 下的每个页面内容并整合
 collect_bv_info(id_tyyh, search_keyword1, bv_lists)
 
 # 手动删除
@@ -157,7 +159,7 @@ bv_lists.append({
 })
 
 # 千葉幽羽
-# 获取关键词 "乃木坂工事中 上行之坂" 下的每个页面内容并整合
+# 获取关键词 "乃木坂工事中 EP 上行之坂" 下的每个页面内容并整合
 # 注意：EP183 - EP187 重复，但仍然保留数据
 collect_bv_info(id_qyyy, search_keyword3, bv_lists2)
 
