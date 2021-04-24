@@ -10148,7 +10148,7 @@ body {
   }
   #mainNav .nav-link {
     transition: none;
-    padding: 2rem 1.5rem;
+    padding: 2rem 1rem;
     color: rgba(118, 42, 128, 0.75);
   }
   #mainNav .nav-link:hover {
@@ -10165,7 +10165,7 @@ body {
   }
   #mainNav.navbar-shrink .nav-link {
     color: lightgray;
-    padding: 1.5rem 1.5rem 1.25rem;
+    padding: 1.5rem 1rem 1.25rem;
     border-bottom: 0.25rem solid transparent;
   }
   #mainNav.navbar-shrink .nav-link:hover {
