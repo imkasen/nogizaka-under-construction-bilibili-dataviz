@@ -10164,7 +10164,7 @@ body {
     color: white;
   }
   #mainNav.navbar-shrink .nav-link {
-    color: darkgrey;
+    color: lightgray;
     padding: 1.5rem 1.5rem 1.25rem;
     border-bottom: 0.25rem solid transparent;
   }
@@ -10197,22 +10197,20 @@ body {
   height: auto;
   min-height: 35rem;
   padding: 15rem 0;
-  /*background: linear-gradient(to top,*/
-  /*rgba(118, 42, 128, 0.2) 0%, rgba(118, 42, 128, 0.5) 50%, rgba(118, 42, 128, 0.7) 70%)*/
-  /*no-repeat scroll center;*/
   background: white no-repeat scroll center;
   background-size: cover;
 }
+
 .masthead h1 {
   font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 2.5rem;
   line-height: 2.5rem;
   letter-spacing: 0.8rem;
-  background: linear-gradient(rgba(118, 42, 128, 0.9), rgba(255, 255, 255, 0));
-  -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
           background-clip: text;
 }
+
+
 .masthead h2 {
   max-width: 20rem;
   font-size: 1rem;
@@ -10229,19 +10227,19 @@ body {
     padding: 0;
   }
   .masthead h1 {
-    font-size: 6.5rem;
-    line-height: 6.5rem;
-    letter-spacing: 0.8rem;
+    font-size: 4.5rem;
+    line-height: 4.5rem;
+    letter-spacing: 0;
   }
   .masthead h2 {
-    max-width: 30rem;
+    max-width: 45rem;
     font-size: 1.25rem;
   }
 }
 
 .about-section {
   padding-top: 10rem;
-  background: linear-gradient(to bottom, #000000 0%, rgba(0, 0, 0, 0.9) 75%, rgba(0, 0, 0, 0.8) 100%);
+  background: whitesmoke;
 }
 .about-section p {
   margin-bottom: 5rem;
@@ -10276,10 +10274,7 @@ body {
 
 .signup-section {
   padding: 10rem 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.5) 75%, #000000 100%););
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
+  background: white no-repeat scroll center;
   background-size: cover;
 }
 .signup-section .form-inline input {
@@ -10295,6 +10290,7 @@ body {
 
 .contact-section {
   padding-top: 5rem;
+  background: whitesmoke;
 }
 .contact-section .card {
   border: 0;
