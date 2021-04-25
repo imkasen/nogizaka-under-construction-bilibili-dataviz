@@ -10275,20 +10275,19 @@ body {
   }
 }
 
-.signup-section {
-  padding: 10rem 0;
+.tech-section {
+  padding: 5rem 0;
+  height: 90vh;
   background: white no-repeat scroll center;
   background-size: cover;
 }
-.signup-section .form-inline input {
-  box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
-  padding: 1.25rem 2rem;
-  height: auto;
-  font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 80%;
-  text-transform: uppercase;
-  letter-spacing: 0.15rem;
-  border: 0;
+
+.tech-section h3 {
+  font-size: 1.25rem;
+}
+
+.dev-icons {
+  font-size: 2.5rem;
 }
 
 .declaration-section {
@@ -10296,6 +10295,10 @@ body {
   background: whitesmoke;
   height: 90vh;
   font-size: 1.25rem;
+}
+
+.declaration-section .fa-ul {
+  margin-left: 2rem;
 }
 
 .social-icons .social-icon {
