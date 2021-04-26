@@ -10238,7 +10238,7 @@ body {
 }
 
 .about-section {
-  height: 90vh;
+  height: 100vh;
   padding-top: 10rem;
   background: whitesmoke;
 }
@@ -10249,7 +10249,7 @@ body {
 }
 
 .projects-section {
-  padding: 10rem 0;
+  padding: 2rem 0;
 }
 .projects-section .featured-text {
   padding: 2rem;
@@ -10277,8 +10277,8 @@ body {
 
 .tech-section {
   padding: 5rem 0;
-  height: 90vh;
-  background: white no-repeat scroll center;
+  height: 100vh;
+  background: whitesmoke no-repeat scroll center;
   background-size: cover;
 }
 
