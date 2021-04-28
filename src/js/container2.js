@@ -157,15 +157,15 @@ export function drawChart2(data) {
             {
                 type: 'slider',
                 show: true,
-                start: 0,
-                end: 10,
+                start: 85,
+                end: 100,
             },
-            {
-                // type: 'inside',
-                // show: true,
-                // start: 0,
-                // end: 25,
-            }
+            // {
+            //     type: 'inside',
+            //     show: true,
+            //     start: 0,
+            //     end: 25,
+            // }
         ],
         series: [
             {
