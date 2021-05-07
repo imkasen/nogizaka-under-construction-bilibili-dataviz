@@ -10249,6 +10249,7 @@ body {
 }
 
 .projects-section {
+  /*height: 100vh;*/
   padding: 2rem 0;
 }
 .projects-section .featured-text {
