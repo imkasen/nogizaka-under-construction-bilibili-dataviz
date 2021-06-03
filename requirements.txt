@@ -6,4 +6,4 @@ jieba==0.42.1
 lxml==4.6.3
 requests==2.25.1
 soupsieve==2.2
-urllib3==1.26.4
+urllib3==1.26.5
