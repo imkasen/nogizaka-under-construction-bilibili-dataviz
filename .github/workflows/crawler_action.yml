@@ -1,6 +1,7 @@
 name: Python Crawler Bot
 
 on:
+  push:
   schedule:
     - cron: '0 0 * * *'
 
@@ -10,14 +11,14 @@ env:
 jobs:
   # a single job
   bot:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.7
+          python-version: 3.9
       - name: Install requirements
         run: |
           python3 -m pip install --upgrade pip
