@@ -9,4 +9,21 @@ $(document).ready(function () {
         $(".navbar-menu").toggleClass("is-active");
 
     });
+
+    // change nav bar color
+    $(window).scroll(
+        function () {
+            if ($("#fix-navbar").offset().top > 500) {
+                $("#fix-navbar").addClass("is-primary");
+                $("#nav-title").removeClass("has-text-primary").addClass("has-text-light");
+                $(".nav-text").removeClass("has-text-primary").addClass("has-text-light");
+                $("#nav-button").addClass("is-inverted");
+            } else {
+                $("#fix-navbar").removeClass("is-primary");
+                $("#nav-title").removeClass("has-text-light").addClass("has-text-primary");
+                $(".nav-text").addClass("has-text-primary").removeClass("has-text-light");
+                $("#nav-button").removeClass("is-inverted");
+            }
+        }
+    );
 });

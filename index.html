@@ -22,12 +22,12 @@
 <body id="page-top" class="has-navbar-fixed-top">
 
     <!-- Navigation -->
-    <nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation" id="fix-navbar">
         <div class="container is-fullhd">
             <!-- title -->
             <div class="navbar-brand">
                 <div class="navbar-item">
-                    <a class="has-text-primary title is-4" href="#page-top">「乃木坂工事中」可视化</a>
+                    <a class="has-text-primary title is-4" id="nav-title" href="#page-top">「乃木坂工事中」可视化</a>
                 </div>
 
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
@@ -40,15 +40,15 @@
 
             <div class="navbar-menu" id="nav-menu">
                 <div class="navbar-end">
-                    <a class="navbar-item has-text-primary" href="#about">关于</a>
-                    <a class="navbar-item has-text-primary" href="#tyyh">天翼羽魂</a>
-                    <a class="navbar-item has-text-primary" href="#qyyy">千葉幽羽</a>
-                    <a class="navbar-item has-text-primary" href="#wordcloud">词云图</a>
-                    <a class="navbar-item has-text-primary" href="#tech">技术栈</a>
-                    <a class="navbar-item has-text-primary" href="#declaration">声明</a>
+                    <a class="navbar-item has-text-primary nav-text" href="#about">关于</a>
+                    <a class="navbar-item has-text-primary nav-text" href="#tyyh">天翼羽魂</a>
+                    <a class="navbar-item has-text-primary nav-text" href="#qyyy">千葉幽羽</a>
+                    <a class="navbar-item has-text-primary nav-text" href="#wordcloud">词云图</a>
+                    <a class="navbar-item has-text-primary nav-text" href="#tech">技术栈</a>
+                    <a class="navbar-item has-text-primary nav-text" href="#declaration">声明</a>
                     <span class="navbar-item">
                         <div class="buttons">
-                            <a class="button is-primary">
+                            <a class="button is-primary" id="nav-button">
                                 <span class="icon">
                                     <i class="fab fa-github"></i>
                                 </span>
@@ -61,11 +61,19 @@
         </div>
     </nav>
 
-    <section class="hero is-link is-fullheight-with-navbar">
+    <section class="hero is-light is-fullheight-with-navbar">
         <div class="hero-body">
             <!-- Masthead -->
             <div class="container has-text-centered">
-                <p class="title">Title</p>
+                <p class="title is-1 is-spaced">
+                    <span style="color: #F07C99;">BiliBili</span>
+                    <span class="has-text-primary">「乃木坂工事中」</span>
+                    <br>
+                    <span>熟肉数据可视化</span>
+                </p>
+                <p class="subtitle is-light">
+                    The video data visualization of <i>"Nogizaka under construction"</i> in BiliBili.
+                </p>
             </div>
         </div>
     </section>
