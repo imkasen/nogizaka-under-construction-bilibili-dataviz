@@ -1,40 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My custom Bulma website</title>
-    <link rel="stylesheet" href="src/css/mystyles.css">
-  </head>
-  <body>
-     <h1 class="title">
-        Bulma
-      </h1>
+<html lang="zh" class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="BiliBili「乃木坂工事中」熟肉数据可视化，包括各期的播放量、弹幕数量和评论数量等..."/>
+    <title>BiliBili「乃木坂工事中」熟肉数据可视化</title>
+    <link rel="icon" type="image/x-icon" href="src/images/favicon.ico" />
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="src/css/styles.css">
+    <!-- jquery -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <!-- 引入 ECharts -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.1.2/dist/echarts.min.js"></script>
+    <!-- 引入 ECharts WordCloud 2 -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@2.0.0/dist/echarts-wordcloud.min.js"></script>
+</head>
+<body id="page-top">
 
-      <p class="subtitle">
-        Modern CSS framework based on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">Flexbox</a>
-      </p>
+    <!-- Navigation -->
+    <nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation">
+        <div class="container is-fullhd">
+            <!-- title -->
+            <div class="navbar-brand">
+                <div class="navbar-item">
+                    <a class="has-text-primary title is-4" href="#page-top">「Nogi」Viz</a>
+                </div>
 
-      <div class="field">
-        <div class="control">
-          <input class="input" type="text" placeholder="Input">
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                   data-target="nav-menu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div class="navbar-menu" id="nav-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item has-text-primary">关于</a>
+                    <a class="navbar-item has-text-primary">天翼羽魂</a>
+                    <a class="navbar-item has-text-primary">千葉幽羽</a>
+                    <a class="navbar-item has-text-primary">弹幕词云图</a>
+                    <a class="navbar-item has-text-primary">技术栈</a>
+                    <a class="navbar-item has-text-primary">声明</a>
+                    <span class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-primary">GitHub</a>
+                        </div>
+                    </span>
+                </div>
+            </div>
         </div>
-      </div>
+    </nav>
 
-      <div class="field">
-        <p class="control">
-          <span class="select">
-            <select>
-              <option>Select dropdown</option>
-            </select>
-          </span>
-        </p>
-      </div>
+    <section class="hero is-link is-fullheight-with-navbar">
+        <div class="hero-body">
+            <!-- Masthead -->
+            <div class="container has-text-centered">
+                <p class="title">Title</p>
+            </div>
+        </div>
+    </section>
 
-      <div class="buttons">
-        <a class="button is-primary">Primary</a>
-        <a class="button is-link">Link</a>
-      </div>
-  </body>
+    <!-- Bulma JS -->
+    <script src="src/js/bulma.js"></script>
+</body>
 </html>

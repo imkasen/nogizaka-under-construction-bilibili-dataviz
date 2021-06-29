@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+// set colors
+$purple: #6F337C;
+
+// update global variables
+$primary: $purple;
+
+@import "../../node_modules/bulma/bulma.sass";

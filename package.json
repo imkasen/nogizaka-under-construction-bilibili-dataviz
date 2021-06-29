@@ -2,13 +2,13 @@
   "name": "nogizaka-dataviz",
   "version": "1.0.0",
   "description": "BiliBili「乃木坂工事中」熟肉数据可视化",
-  "main": "src/sass/mystyles.scss",
+  "main": "src/sass/styles.scss",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Kasen96/Nogizaka-Under-Construction-Bilibili-Dataviz.git"
   },
   "scripts": {
-    "css-build": "node-sass --omit-source-map-url src/sass/mystyles.scss src/css/mystyles.css",
+    "css-build": "node-sass --omit-source-map-url src/sass/styles.scss src/css/styles.css",
     "css-watch": "npm run css-build -- --watch",
     "start": "npm run css-watch"
   },
