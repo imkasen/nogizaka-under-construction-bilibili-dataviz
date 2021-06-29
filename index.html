@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" class="has-navbar-fixed-top">
+<html lang="zh">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -10,6 +10,8 @@
     <link rel="icon" type="image/x-icon" href="src/images/favicon.ico" />
     <!-- Bulma CSS -->
     <link rel="stylesheet" href="src/css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
     <!-- jquery -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <!-- 引入 ECharts -->
@@ -17,7 +19,7 @@
     <!-- 引入 ECharts WordCloud 2 -->
     <script src="https://cdn.jsdelivr.net/npm/echarts-wordcloud@2.0.0/dist/echarts-wordcloud.min.js"></script>
 </head>
-<body id="page-top">
+<body id="page-top" class="has-navbar-fixed-top">
 
     <!-- Navigation -->
     <nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation">
@@ -25,7 +27,7 @@
             <!-- title -->
             <div class="navbar-brand">
                 <div class="navbar-item">
-                    <a class="has-text-primary title is-4" href="#page-top">「Nogi」Viz</a>
+                    <a class="has-text-primary title is-4" href="#page-top">「乃木坂工事中」可视化</a>
                 </div>
 
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
@@ -38,15 +40,20 @@
 
             <div class="navbar-menu" id="nav-menu">
                 <div class="navbar-end">
-                    <a class="navbar-item has-text-primary">关于</a>
-                    <a class="navbar-item has-text-primary">天翼羽魂</a>
-                    <a class="navbar-item has-text-primary">千葉幽羽</a>
-                    <a class="navbar-item has-text-primary">弹幕词云图</a>
-                    <a class="navbar-item has-text-primary">技术栈</a>
-                    <a class="navbar-item has-text-primary">声明</a>
+                    <a class="navbar-item has-text-primary" href="#about">关于</a>
+                    <a class="navbar-item has-text-primary" href="#tyyh">天翼羽魂</a>
+                    <a class="navbar-item has-text-primary" href="#qyyy">千葉幽羽</a>
+                    <a class="navbar-item has-text-primary" href="#wordcloud">词云图</a>
+                    <a class="navbar-item has-text-primary" href="#tech">技术栈</a>
+                    <a class="navbar-item has-text-primary" href="#declaration">声明</a>
                     <span class="navbar-item">
                         <div class="buttons">
-                            <a class="button is-primary">GitHub</a>
+                            <a class="button is-primary">
+                                <span class="icon">
+                                    <i class="fab fa-github"></i>
+                                </span>
+                                <span>GitHub</span>
+                            </a>
                         </div>
                     </span>
                 </div>
@@ -59,6 +66,60 @@
             <!-- Masthead -->
             <div class="container has-text-centered">
                 <p class="title">Title</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="hero is-danger is-fullheight" id="about">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <p class="title">关于</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 天翼羽魂 -->
+    <section class="hero is-link is-fullheight" id="tyyh">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <p class="title">天翼羽魂</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 千葉幽羽 -->
+    <section class="hero is-danger is-fullheight" id="qyyy">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <p class="title">千葉幽羽</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 词云图 -->
+    <section class="hero is-link is-fullheight" id="wordcloud">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <p class="title">词云图</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技术栈 -->
+    <section class="hero is-danger is-fullheight" id="tech">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <p class="title">技术栈</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 声明 -->
+    <section class="hero is-link is-fullheight-with-navbar" id="declaration">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <p class="title">声明</p>
             </div>
         </div>
     </section>
