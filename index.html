@@ -65,7 +65,7 @@
     <section class="hero is-fullheight-with-navbar is-light">
         <div class="hero-body">
             <!-- Masthead -->
-            <div class="container has-text-centered">
+            <div class="container has-text-centered is-fullhd">
                 <p class="title is-1 is-spaced">
                     <span class="has-text-danger-light">BiliBili</span>
                     <span class="has-text-primary">「乃木坂工事中」</span>
@@ -81,7 +81,7 @@
 
     <!-- About -->
     <section class="hero is-fullheight" id="about">
-        <div class="hero-body">
+        <div class="hero-body is-fullhd">
             <div class="container has-text-centered">
                 <p class="title is-2 is-spaced">初衷</p>
                 <p class="subtitle has-text-grey">
@@ -117,28 +117,53 @@
     </section>
 
     <!-- 天翼羽魂 -->
-    <section class="hero is-link is-fullheight" id="tyyh">
+    <section class="hero is-fullheight" id="tyyh">
         <div class="hero-body">
-            <div class="container has-text-centered">
-                <p class="title">天翼羽魂</p>
+            <div id="container" style="width: 100%; min-height: 70vh;"></div>
+        </div>
+        <div class="hero-foot">
+            <div class="container">
+                <div class="notification is-info is-light">
+                    <button class="delete"></button>
+                    <span>备注：</span><br/>
+                    <span>1. EP40【开枪大会的优胜者是谁？内部模仿成员大赛 后篇】无播放数据</span><br/>
+                    <span>2. EP154【生驹里奈毕业演唱会特集】视频缺失</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- 千葉幽羽 -->
-    <section class="hero is-danger is-fullheight" id="qyyy">
+    <section class="hero is-fullheight" id="qyyy">
         <div class="hero-body">
-            <div class="container has-text-centered">
-                <p class="title">千葉幽羽</p>
+            <div id="container2" style="width: 100%; min-height: 70vh;"></div>
+        </div>
+        <div class="hero-foot">
+            <div class="container">
+                <div class="notification is-info is-light">
+                    <button class="delete"></button>
+                    <span>备注：</span><br/>
+                    <span>1. EP183 - EP187 重复，但仍然保留数据</span>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- 词云图 -->
-    <section class="hero is-link is-fullheight" id="wordcloud">
+    <section class="hero is-fullheight" id="wordcloud">
         <div class="hero-body">
-            <div class="container has-text-centered">
-                <p class="title">词云图</p>
+            <div class="container">
+                <p class="title has-text-centered">上期：「<span class="wordcloud_title"></span>」弹幕词云图</p>
+                <div id="container3" style="width: 100%; min-height: 50vh;"></div>
+            </div>
+        </div>
+        <div class="hero-foot">
+            <div class="container">
+                <div class="notification is-info is-light">
+                    <span>备注：</span><br/>
+                    <span>1. 排除的弹幕包括："感谢字幕组"、数字、标点、下划线，以及 "WWW"，"HHH"，"哈哈哈"等。</span><br/>
+                    <span>2. 排除 "感谢字幕组" 是因为该弹幕数量占比远远高于其他弹幕数量。</span>
+                </div>
             </div>
         </div>
     </section>
@@ -146,9 +171,9 @@
     <!-- 技术栈 -->
     <section class="hero is-fullheight" id="tech">
         <div class="hero-body">
-            <div class="container">
+            <div class="container is-fullhd">
                 <div class="columns">
-                    <div class="column">
+                    <div class="column is-one-third">
                         <p class="title">技术与工具</p>
                         <p class="subtitle has-text-grey">Programming Languages & Tools</p>
 
@@ -183,7 +208,7 @@
                             <span>Echarts</span>
                         </div>
                     </div>
-                    <div class="column">
+                    <div class="column is-one-third">
                         <p class="title">工作流程</p>
                         <p class="subtitle has-text-grey">WorkFlow</p>
                         <div class="content">
@@ -194,7 +219,7 @@
                             </ol>
                         </div>
                     </div>
-                    <div class="column">
+                    <div class="column is-one-third">
                         <figure class="image">
                             <img src="src/images/suoha.jpeg" alt="梭哈"/>
                         </figure>
@@ -207,12 +232,12 @@
     <!-- 声明 -->
     <section class="hero is-light is-fullheight-with-navbar" id="declaration">
         <div class="hero-body">
-            <div class="container">
+            <div class="container is-fullhd">
                 <div class="block has-text-centered">
                     <p class="title">声明</p>
                     <p class="subtitle has-text-grey">Declaration</p>
                 </div>
-                <div class="content">
+                <div class="content is-medium">
                     <ul>
                         <li>本网站全部代码基于 GNU GPLv3 许可开源。</li>
                         <li>本网站纯属粉丝个人兴趣之产物，并非为营利行为所创作，建立者并无因此获得任何利益。</li>
@@ -235,7 +260,7 @@
             <footer class="footer">
                 <div class="content has-text-centered">
                     <p>
-                        Author: <strong><a class="has-text-link" href="https://github.com/Kasen96">Kasen</a></strong>.
+                        Author: <a class="has-text-link" href="https://github.com/Kasen96">Kasen</a>.
                         The source code is licensed <a class="has-text-link" href="https://opensource.org/licenses/GPL-3.0">GPL v3</a>.
                     </p>
                     <p>
@@ -251,5 +276,7 @@
 
     <!-- Bulma JS -->
     <script src="src/js/bulma.js"></script>
+    <!-- Fetch data JS -->
+    <script type="module" src="src/js/fetch.js"></script>
 </body>
 </html>

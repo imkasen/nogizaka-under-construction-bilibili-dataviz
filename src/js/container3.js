@@ -20,7 +20,7 @@ export function drawChart3(data) {
     let option = {
         series: [{
             type: 'wordCloud',
-            shape: 'circle',
+            shape: 'diamond',
             // left: 'center',
             // top: 'center',
             width: '100%',

@@ -28,7 +28,7 @@ export function drawChart2(data) {
             enabled: true,
         },
         title: { // 标题
-            // text: "【乃木坂工事中】千葉幽羽部分视频数据",
+            text: "「乃木坂工事中」千葉幽羽部分视频数据（上行之坂）",
             subtext: "2018 年 12 月 ~ 至今",
             left: 'center',
         },
@@ -69,7 +69,7 @@ export function drawChart2(data) {
             }
         },
         toolbox: { // 工具栏
-            right: '15%',
+            right: '11%',
             feature: {
                 dataView: {
                     readOnly: true,
@@ -78,7 +78,7 @@ export function drawChart2(data) {
                     type: ['line', 'bar'],
                 },
                 saveAsImage: {
-                    name: "【乃木坂工事中】千葉幽羽部分视频数据",
+                    // name: "「乃木坂工事中」千葉幽羽部分视频数据（上行之坂）",
                     pixelRatio: 1,
                     backgroundColor: { // 下载水印
                         type: 'pattern',
