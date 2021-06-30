@@ -48,7 +48,8 @@
                     <a class="navbar-item has-text-primary nav-text" href="#declaration">声明</a>
                     <span class="navbar-item">
                         <div class="buttons">
-                            <a class="button is-primary" id="nav-button">
+                            <a class="button is-primary" id="nav-button" target="_blank"
+                               href="https://github.com/Kasen96/Nogizaka-Under-Construction-Bilibili-Dataviz">
                                 <span class="icon">
                                     <i class="fab fa-github"></i>
                                 </span>
@@ -61,17 +62,17 @@
         </div>
     </nav>
 
-    <section class="hero is-light is-fullheight-with-navbar">
+    <section class="hero is-fullheight-with-navbar is-light">
         <div class="hero-body">
             <!-- Masthead -->
             <div class="container has-text-centered">
                 <p class="title is-1 is-spaced">
-                    <span style="color: #F07C99;">BiliBili</span>
+                    <span class="has-text-danger-light">BiliBili</span>
                     <span class="has-text-primary">「乃木坂工事中」</span>
                     <br>
                     <span>熟肉数据可视化</span>
                 </p>
-                <p class="subtitle is-light">
+                <p class="subtitle has-text-grey">
                     The video data visualization of <i>"Nogizaka under construction"</i> in BiliBili.
                 </p>
             </div>
@@ -79,10 +80,38 @@
     </section>
 
     <!-- About -->
-    <section class="hero is-danger is-fullheight" id="about">
+    <section class="hero is-fullheight" id="about">
         <div class="hero-body">
             <div class="container has-text-centered">
-                <p class="title">关于</p>
+                <p class="title is-2 is-spaced">初衷</p>
+                <p class="subtitle has-text-grey">
+                    偶然看到一个很不错的「乃木坂工事中」可视化
+                    <a class="has-text-link" target="_blank"
+                       href="https://github.com/DesertsX/nogizaka-under-construction-dataviz">作品</a>
+                    ，很可惜它只展示了部分信息，因此我决定做一个更详细版本。
+                    <br/>
+                    Inspired by a very nice visualization
+                    <a class="has-text-link" target="_blank"
+                       href="https://github.com/DesertsX/nogizaka-under-construction-dataviz">
+                        project</a>
+                    ，and I made a more detailed version
+                    to compensate for its deficiencies.
+                </p>
+
+                <span class="tags are-large is-centered">
+                    <a target="_blank"
+                       href="https://space.bilibili.com/2301165/video?keyword=%E4%B9%83%E6%9C%A8%E5%9D%82%E5%B7%A5%E4%BA%8B%E4%B8%AD">
+                        <span class="tag">
+                            <span class="icon"><i class="fas fa-file-video"></i></span>
+                        </span>
+                    </a>
+                    <a target="_blank"
+                       href="https://space.bilibili.com/19553445/video?keyword=%E4%B9%83%E6%9C%A8%E5%9D%82%E5%B7%A5%E4%BA%8B%E4%B8%AD">
+                        <span class="tag">
+                            <span class="icon"><i class="far fa-file-video"></i></span>
+                        </span>
+                    </a>
+                </span>
             </div>
         </div>
     </section>
@@ -115,20 +144,108 @@
     </section>
 
     <!-- 技术栈 -->
-    <section class="hero is-danger is-fullheight" id="tech">
+    <section class="hero is-fullheight" id="tech">
         <div class="hero-body">
-            <div class="container has-text-centered">
-                <p class="title">技术栈</p>
+            <div class="container">
+                <div class="columns">
+                    <div class="column">
+                        <p class="title">技术与工具</p>
+                        <p class="subtitle has-text-grey">Programming Languages & Tools</p>
+
+                        <div class="icon-text">
+                            <span class="icon">
+                                <i class="fab fa-html5"></i>
+                            </span>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="icon-text">
+                            <span class="icon">
+                                <i class="fab fa-css3-alt"></i>
+                            </span>
+                            <span>Bulma</span>
+                        </div>
+                        <div class="icon-text">
+                            <span class="icon">
+                                <i class="fab fa-js-square"></i>
+                            </span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="icon-text">
+                            <span class="icon">
+                                <i class="fab fa-python"></i>
+                            </span>
+                            <span>Python 3</span>
+                        </div>
+                        <div class="icon-text">
+                            <span class="icon">
+                                <i class="far fa-chart-bar"></i>
+                            </span>
+                            <span>Echarts</span>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <p class="title">工作流程</p>
+                        <p class="subtitle has-text-grey">WorkFlow</p>
+                        <div class="content">
+                            <ol>
+                                <li>爬虫抓取并处理数据</li>
+                                <li>ECharts 生成图表</li>
+                                <li>基于 Bulma 展示网页</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <figure class="image">
+                            <img src="src/images/suoha.jpeg" alt="梭哈"/>
+                        </figure>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- 声明 -->
-    <section class="hero is-link is-fullheight-with-navbar" id="declaration">
+    <section class="hero is-light is-fullheight-with-navbar" id="declaration">
         <div class="hero-body">
-            <div class="container has-text-centered">
-                <p class="title">声明</p>
+            <div class="container">
+                <div class="block has-text-centered">
+                    <p class="title">声明</p>
+                    <p class="subtitle has-text-grey">Declaration</p>
+                </div>
+                <div class="content">
+                    <ul>
+                        <li>本网站全部代码基于 GNU GPLv3 许可开源。</li>
+                        <li>本网站纯属粉丝个人兴趣之产物，并非为营利行为所创作，建立者并无因此获得任何利益。</li>
+                        <li>凡在本网站出现的信息，均仅供参考。本网站将尽力确保所提供信息的准确性及可靠性，
+                        但不保证有关资料的准确性及可靠性。</li>
+                        <li>本网站对有关资料所引致的错误、不确或遗漏，
+                        概不负任何法律责任（包括侵权责任、合同责任和其它责任）。</li>
+                        <li>当本网站以链接形式推荐其他网站内容时，本网站并不对这些网站或资源的可用性负责，
+                        且不保证从这些网站获取的任何内容、产品、服务或其他材料的真实性、合法性。
+                        对于任何因使用或信赖从此类网站或资源上获取的内容、产品、服务或其他材料而造成（或声称造成）的任何直接或间接损失，
+                        本网站均不承担任何责任。</li>
+                        <li>本网站内容如无意中侵犯了哪个媒体 、公司 、企业或个人等的知识产权，
+                        请提交 issue ，本网站将在规定时间内给予删除等相关处理。</li>
+                    </ul>
+                </div>
             </div>
+        </div>
+
+        <div class="hero-foot">
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>
+                        Author: <strong><a class="has-text-link" href="https://github.com/Kasen96">Kasen</a></strong>.
+                        The source code is licensed <a class="has-text-link" href="https://opensource.org/licenses/GPL-3.0">GPL v3</a>.
+                    </p>
+                    <p>
+                        <a href="https://bulma.io">
+                            <img src="https://bulma.io/images/made-with-bulma.png"
+                                 alt="Made with Bulma" width="128" height="24" />
+                        </a>
+                    </p>
+                </div>
+            </footer>
         </div>
     </section>
 

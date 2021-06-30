@@ -2,9 +2,13 @@
 
 // set colors
 $purple: #6F337C;
+$pink: #F07C99;
 
 // update global variables
 $primary: $purple;
 $size-1: 5rem;
+$danger-light: $pink;
+$link: $purple;
+$footer-padding: 1.5rem 1.5rem 1.5rem;
 
 @import "../../node_modules/bulma/bulma.sass";

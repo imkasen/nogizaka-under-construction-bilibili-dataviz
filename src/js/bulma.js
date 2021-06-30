@@ -1,19 +1,22 @@
 "use strict";
 
-$(document).ready(function () {
-    // Check for click events on the navbar burger icon
-    $(".navbar-burger").click(function () {
+$(document).ready(
+    function () {
+        // Check for click events on the navbar burger icon
+        $(".navbar-burger").click(function () {
 
-        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-        $(".navbar-burger").toggleClass("is-active");
-        $(".navbar-menu").toggleClass("is-active");
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            $(".navbar-burger").toggleClass("is-active");
+            $(".navbar-menu").toggleClass("is-active");
 
-    });
+        });
+});
 
+(function ($){
     // change nav bar color
     $(window).scroll(
         function () {
-            if ($("#fix-navbar").offset().top > 500) {
+            if ($("#fix-navbar").offset().top > 100) {
                 $("#fix-navbar").addClass("is-primary");
                 $("#nav-title").removeClass("has-text-primary").addClass("has-text-light");
                 $(".nav-text").removeClass("has-text-primary").addClass("has-text-light");
@@ -26,4 +29,4 @@ $(document).ready(function () {
             }
         }
     );
-});
+})(jQuery);
