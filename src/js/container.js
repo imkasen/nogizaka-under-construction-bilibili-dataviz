@@ -28,7 +28,7 @@ export function drawChart(data) {
             enabled: true,
         },
         title: { // 标题
-            // text: "【乃木坂工事中】天翼羽魂部分视频数据",
+            text: "「乃木坂工事中」天翼羽魂部分视频数据（乃木坂不够热、坂道之诗）",
             subtext: "2015 年 4 月 ~ 2018 年 12 月",
             left: 'center',
         },
@@ -78,7 +78,7 @@ export function drawChart(data) {
             }
         },
         toolbox: {
-            right: '15%',
+            right: '11%',
             feature: {
                 dataView: {
                     readOnly: true,
@@ -87,7 +87,7 @@ export function drawChart(data) {
                     type: ['line', 'bar'],
                 },
                 saveAsImage: {
-                    name: "【乃木坂工事中】天翼羽魂部分视频数据",
+                    // name: "「乃木坂工事中」天翼羽魂部分视频数据（乃木坂不够热、坂道之诗）",
                     pixelRatio: 1,
                     backgroundColor: { // 下载水印
                         type: 'pattern',
@@ -290,6 +290,11 @@ export function drawChart(data) {
 
     // 显示图表
     myChart.setOption(option);
+
+    // 图表形状随浏览器窗口变化而变化
+    window.addEventListener('resize', function () {
+        myChart.resize();
+    })
 
     // 点击事件
     myChart.on('click', function (params) {
