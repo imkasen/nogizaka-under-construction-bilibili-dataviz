@@ -19,12 +19,12 @@ $(document).ready(
             if ($("#fix-navbar").offset().top > 100) {
                 $("#fix-navbar").addClass("is-primary");
                 $("#nav-title").removeClass("has-text-primary").addClass("has-text-light");
-                $(".nav-text").removeClass("has-text-primary").addClass("has-text-light");
+                $(".nav-text").removeClass("has-text-primary");
                 $("#nav-button").addClass("is-inverted");
             } else {
                 $("#fix-navbar").removeClass("is-primary");
                 $("#nav-title").removeClass("has-text-light").addClass("has-text-primary");
-                $(".nav-text").addClass("has-text-primary").removeClass("has-text-light");
+                $(".nav-text").addClass("has-text-primary");
                 $("#nav-button").removeClass("is-inverted");
             }
         }

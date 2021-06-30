@@ -286,6 +286,11 @@ export function drawChart2(data) {
     // 显示图表
     myChart.setOption(option);
 
+    // 图表形状随浏览器窗口变化而变化
+    window.addEventListener('resize', function () {
+        myChart.resize();
+    })
+
     // 点击事件
     myChart.on('click', function (params) {
         // 点击折线拐点，柱状图跳转至相关网页

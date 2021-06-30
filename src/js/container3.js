@@ -60,6 +60,10 @@ export function drawChart3(data) {
 
     myChart.setOption(option);
 
+    window.addEventListener('resize', function () {
+        myChart.resize();
+    })
+
     window.onresize = function () {
         myChart.resize();
     }
