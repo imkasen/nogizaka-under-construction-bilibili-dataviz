@@ -2,7 +2,7 @@
 
 偶然看到一个很不错的乃木板工事中可视化[作品](https://github.com/DesertsX/nogizaka-under-construction-dataviz) ，很可惜它展示的信息不全面，于是决定做一个更加详细的版本。
 
-每天早晨 8 点自动更新数据。
+*每天自动更新数据。*
 
 # 环境 / 依赖
 

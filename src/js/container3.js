@@ -20,7 +20,7 @@ export function drawChart3(data) {
     let option = {
         series: [{
             type: 'wordCloud',
-            shape: 'diamond',
+            shape: 'circle',
             // left: 'center',
             // top: 'center',
             width: '100%',
@@ -63,8 +63,4 @@ export function drawChart3(data) {
     window.addEventListener('resize', function () {
         myChart.resize();
     })
-
-    window.onresize = function () {
-        myChart.resize();
-    }
 }

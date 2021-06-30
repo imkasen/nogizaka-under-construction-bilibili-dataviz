@@ -21,6 +21,8 @@
 </head>
 <body id="page-top" class="has-navbar-fixed-top">
 
+    <!-- 我尽力了，怎么会这么丑... -->
+
     <!-- Navigation -->
     <nav class="navbar is-fixed-top is-light" role="navigation" aria-label="main navigation" id="fix-navbar">
         <div class="container is-fullhd">
@@ -81,8 +83,8 @@
 
     <!-- About -->
     <section class="hero is-fullheight" id="about">
-        <div class="hero-body is-fullhd">
-            <div class="container has-text-centered">
+        <div class="hero-body">
+            <div class="container is-fullhd has-text-centered">
                 <p class="title is-2 is-spaced">初衷</p>
                 <p class="subtitle has-text-grey">
                     偶然看到一个很不错的「乃木坂工事中」可视化
@@ -122,9 +124,8 @@
             <div id="container" style="width: 100%; min-height: 70vh;"></div>
         </div>
         <div class="hero-foot">
-            <div class="container">
+            <div class="container is-fullhd">
                 <div class="notification is-info is-light">
-                    <button class="delete"></button>
                     <span>备注：</span><br/>
                     <span>1. EP40【开枪大会的优胜者是谁？内部模仿成员大赛 后篇】无播放数据</span><br/>
                     <span>2. EP154【生驹里奈毕业演唱会特集】视频缺失</span>
@@ -139,9 +140,8 @@
             <div id="container2" style="width: 100%; min-height: 70vh;"></div>
         </div>
         <div class="hero-foot">
-            <div class="container">
+            <div class="container is-fullhd">
                 <div class="notification is-info is-light">
-                    <button class="delete"></button>
                     <span>备注：</span><br/>
                     <span>1. EP183 - EP187 重复，但仍然保留数据</span>
                 </div>
@@ -150,15 +150,17 @@
     </section>
 
     <!-- 词云图 -->
+    <!-- body 和 foot 之间空了一大块出来，烦了，不想搞了.... -->
+    <!-- 就这么丑吧... -->
     <section class="hero is-fullheight" id="wordcloud">
         <div class="hero-body">
-            <div class="container">
+            <div class="container is-fullhd">
                 <p class="title has-text-centered">上期：「<span class="wordcloud_title"></span>」弹幕词云图</p>
                 <div id="container3" style="width: 100%; min-height: 50vh;"></div>
             </div>
         </div>
         <div class="hero-foot">
-            <div class="container">
+            <div class="container is-fullhd">
                 <div class="notification is-info is-light">
                     <span>备注：</span><br/>
                     <span>1. 排除的弹幕包括："感谢字幕组"、数字、标点、下划线，以及 "WWW"，"HHH"，"哈哈哈"等。</span><br/>
@@ -172,46 +174,46 @@
     <section class="hero is-fullheight" id="tech">
         <div class="hero-body">
             <div class="container is-fullhd">
-                <div class="columns">
-                    <div class="column is-one-third">
+                <div class="columns is-multiline">
+
+                    <div class="column is-half">
                         <p class="title">技术与工具</p>
                         <p class="subtitle has-text-grey">Programming Languages & Tools</p>
 
-                        <div class="icon-text">
-                            <span class="icon">
-                                <i class="fab fa-html5"></i>
-                            </span>
-                            <span>HTML5</span>
-                        </div>
-                        <div class="icon-text">
-                            <span class="icon">
-                                <i class="fab fa-css3-alt"></i>
-                            </span>
-                            <span>Bulma</span>
-                        </div>
-                        <div class="icon-text">
-                            <span class="icon">
-                                <i class="fab fa-js-square"></i>
-                            </span>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="icon-text">
-                            <span class="icon">
-                                <i class="fab fa-python"></i>
-                            </span>
-                            <span>Python 3</span>
-                        </div>
-                        <div class="icon-text">
-                            <span class="icon">
-                                <i class="far fa-chart-bar"></i>
-                            </span>
-                            <span>Echarts</span>
+                        <div class="content is-medium">
+                            <div class="icon-text">
+                                <span class="icon"><i class="fab fa-html5"></i></span>
+                                <span>HTML5</span>
+                            </div>
+                            <div class="icon-text">
+                                <span class="icon"><i class="fab fa-css3-alt"></i></span>
+                                <span>Bulma</span>
+                            </div>
+                            <div class="icon-text">
+                                <span class="icon"><i class="fab fa-js-square"></i></span>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="icon-text">
+                                <span class="icon"><i class="fab fa-python"></i></span>
+                                <span>Python 3</span>
+                            </div>
+                            <div class="icon-text">
+                                <span class="icon"><i class="far fa-chart-bar"></i></span>
+                                <span>Echarts 5</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="column is-one-third">
+
+                    <div class="column is-half">
+                        <figure class="image">
+                            <img src="src/images/suo.jpeg" style="width: 70%;" alt="suo"/>
+                        </figure>
+                    </div>
+
+                    <div class="column is-half">
                         <p class="title">工作流程</p>
                         <p class="subtitle has-text-grey">WorkFlow</p>
-                        <div class="content">
+                        <div class="content is-medium">
                             <ol>
                                 <li>爬虫抓取并处理数据</li>
                                 <li>ECharts 生成图表</li>
@@ -219,11 +221,13 @@
                             </ol>
                         </div>
                     </div>
-                    <div class="column is-one-third">
+
+                    <div class="column is-half">
                         <figure class="image">
-                            <img src="src/images/suoha.jpeg" alt="梭哈"/>
+                            <img src="src/images/design.jpg" style="width: 70%;" alt="design"/>
                         </figure>
                     </div>
+
                 </div>
             </div>
         </div>
