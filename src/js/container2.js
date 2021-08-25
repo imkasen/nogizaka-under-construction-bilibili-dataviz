@@ -160,12 +160,11 @@ export function drawChart2(data) {
                 start: 85,
                 end: 100,
             },
-            // {
-            //     type: 'inside',
-            //     show: true,
-            //     start: 0,
-            //     end: 25,
-            // }
+            {
+                type: 'inside',
+                start: 85,
+                end: 100,
+            }
         ],
         series: [
             {
