@@ -29,6 +29,7 @@ export function drawChart2(data) {
         },
         title: { // 标题
             text: "「乃木坂工事中」千葉幽羽部分视频数据（上行之坂）",
+            link: "https://space.bilibili.com/19553445/video?keyword=%E4%B9%83%E6%9C%A8%E5%9D%82%E5%B7%A5%E4%BA%8B%E4%B8%AD",
             subtext: "2018 年 12 月 ~ 至今",
             left: 'center',
         },

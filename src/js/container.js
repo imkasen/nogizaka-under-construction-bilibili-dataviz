@@ -29,6 +29,7 @@ export function drawChart(data) {
         },
         title: { // 标题
             text: "「乃木坂工事中」天翼羽魂部分视频数据（乃木坂不够热、坂道之诗）",
+            link: "https://space.bilibili.com/2301165/video?keyword=%E4%B9%83%E6%9C%A8%E5%9D%82%E5%B7%A5%E4%BA%8B%E4%B8%AD",
             subtext: "2015 年 4 月 ~ 2018 年 12 月",
             left: 'center',
         },
