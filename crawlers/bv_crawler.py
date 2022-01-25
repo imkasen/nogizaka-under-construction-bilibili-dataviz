@@ -135,43 +135,47 @@ def collect_bv_info(mid, keyword, ep_list):
             })
 
 
-bv_lists = []
-bv_lists2 = []
-# 天翼羽魂
-# 获取关键词 "乃木坂工事中 EP 不够热" 下的每个页面内容并整合
-collect_bv_info(id_tyyh, search_keyword1, bv_lists)
+def main():
+    bv_lists = []
+    bv_lists2 = []
+    # 天翼羽魂
+    # 获取关键词 "乃木坂工事中 EP 不够热" 下的每个页面内容并整合
+    collect_bv_info(id_tyyh, search_keyword1, bv_lists)
 
-# 手动删除
-del bv_lists[93]  # "EP103"，下个关键词再添加
+    # 手动删除
+    del bv_lists[93]  # "EP103"，下个关键词再添加
 
-# 获取关键词 "乃木坂工事中 坂道之诗" 下的每个页面内容并整合
-# 注意：缺少 EP154 生驹里奈毕业演唱会特集
-collect_bv_info(id_tyyh, search_keyword2, bv_lists)
-bv_lists.append({
-    "Index": 154.0,
-    "EP": "EP154",
-    "BV": "",
-    "Title": "生驹里奈毕业演唱会特集",
-    "Time": None,
-    "Play": None,
-    "Comment": None,
-    "Danmaku": None,
-})
+    # 获取关键词 "乃木坂工事中 坂道之诗" 下的每个页面内容并整合
+    # 注意：缺少 EP154 生驹里奈毕业演唱会特集
+    collect_bv_info(id_tyyh, search_keyword2, bv_lists)
+    bv_lists.append({
+        "Index": 154.0,
+        "EP": "EP154",
+        "BV": "",
+        "Title": "生驹里奈毕业演唱会特集",
+        "Time": None,
+        "Play": None,
+        "Comment": None,
+        "Danmaku": None,
+    })
 
-# 千葉幽羽
-# 获取关键词 "乃木坂工事中 EP 上行之坂" 下的每个页面内容并整合
-# 注意：EP183 - EP187 重复，但仍然保留数据
-collect_bv_info(id_qyyy, search_keyword3, bv_lists2)
+    # 千葉幽羽
+    # 获取关键词 "乃木坂工事中 EP 上行之坂" 下的每个页面内容并整合
+    # 注意：EP183 - EP187 重复，但仍然保留数据
+    collect_bv_info(id_qyyy, search_keyword3, bv_lists2)
 
-# 按序号排序
-bv_lists.sort(key=lambda k: k.get("Index"))
-bv_lists2.sort(key=lambda k: k.get("Index"))
+    # 按序号排序
+    bv_lists.sort(key=lambda k: k.get("Index"))
+    bv_lists2.sort(key=lambda k: k.get("Index"))
 
-# 天翼羽魂部分写入 'bv_info.json'
-with open('resources/bv_info.json', 'w') as bv_file:
-    json.dump(bv_lists, bv_file, ensure_ascii=False, indent=4)
+    # 天翼羽魂部分写入 'bv_info.json'
+    with open('resources/bv_info.json', 'w') as bv_file:
+        json.dump(bv_lists, bv_file, ensure_ascii=False, indent=4)
 
-# 千葉幽羽部分写入 'bv_info2.json'
-with open('resources/bv_info2.json', 'w') as bv_file2:
-    json.dump(bv_lists2, bv_file2, ensure_ascii=False, indent=4)
+    # 千葉幽羽部分写入 'bv_info2.json'
+    with open('resources/bv_info2.json', 'w') as bv_file2:
+        json.dump(bv_lists2, bv_file2, ensure_ascii=False, indent=4)
 
+
+if __name__ == '__main__':
+    main()

@@ -58,8 +58,10 @@ fetchURLs().then((bv_data) => {
     return bv_data[0].value.length + bv_data[1].value.length - 6;
 }).then((ep_num) => {
     // get danmaku data
-    return fetch(`resources/danmaku/EP${ep_num}.json`)
-        .then(res => res.json());
+    // return fetch(`resources/danmaku/EP${ep_num}.json`)
+    //    .then(res => res.json());
+    return fetch(`resources/danmaku.json`)
+       .then(res => res.json());
 }).then((danmaku_data) => {
     $('.wordcloud_title').html(danmaku_data[0]); // 插入标题
     drawChart3(danmaku_data[1]);

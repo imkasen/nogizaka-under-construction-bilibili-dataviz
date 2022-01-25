@@ -80,25 +80,22 @@ def get_danmaku(cid):
     return danmaku_dict
 
 
-# get danmaku of the last video
-with open('resources/bv_info2.json', 'r') as read_file:
-    bv_data = json.load(read_file)
-    # 更新上周弹幕
-    last_bv = bv_data[-1]['BV']
-    last_ep = bv_data[-1]['EP']
-    last_title = bv_data[-1]['Title']
-    cid_data = get_cid_response(last_bv)
-    last_cid = cid_data['data'][0]['cid']  # p=1
-    danmaku = get_danmaku(last_cid)
-    with open(f'resources/danmaku/{last_ep}.json', 'w') as write_file:
-        json.dump([last_title, danmaku], write_file, ensure_ascii=False, indent=4)
+def main():
+    # get danmaku of the last video
+    with open('resources/bv_info2.json', 'r') as read_file:
+        bv_data = json.load(read_file)
+        # 更新上周弹幕
+        last_bv = bv_data[-1]['BV']
+        last_ep = bv_data[-1]['EP']
+        last_title = bv_data[-1]['Title']
+        cid_data = get_cid_response(last_bv)
+        last_cid = cid_data['data'][0]['cid']  # p=1
+        danmaku = get_danmaku(last_cid)
+        # with open(f'resources/danmaku/{last_ep}.json', 'w') as write_file:
+            # json.dump([last_title, danmaku], write_file, ensure_ascii=False, indent=4)
+        with open(f'resources/danmaku.json', 'w') as write_file:
+            json.dump([last_title, danmaku], write_file, ensure_ascii=False, indent=4)
 
-    # for i in range(-1, -6, -1):  # 更新近 5 周弹幕
-    #     last_bv = bv_data[i]['BV']
-    #     last_ep = bv_data[i]['EP']
-    #     last_title = bv_data[i]['Title']
-    #     cid_data = get_cid_response(last_bv)
-    #     last_cid = cid_data['data'][0]['cid']  # p=1
-    #     danmaku = get_danmaku(last_cid)
-    #     with open(f'resources/danmaku/{last_ep}.json', 'w') as write_file:
-    #         json.dump([last_title, danmaku], write_file, ensure_ascii=False, indent=4)
+
+if __name__ == '__main__':
+    main()
