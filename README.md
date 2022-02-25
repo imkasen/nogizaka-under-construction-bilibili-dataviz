@@ -10,7 +10,7 @@
 * Python 3
   * requests
   * beautifulsoup4
-  * jieba
+  * [jieba](https://github.com/fxsjy/jieba)
 * [ECharts 5](https://echarts.apache.org/zh/index.html)
 * [ECharts-WordCloud Version 2](https://github.com/ecomfe/echarts-wordcloud)
 * [Bulma](https://bulma.io/)
