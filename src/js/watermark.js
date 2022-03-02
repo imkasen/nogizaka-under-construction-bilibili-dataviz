@@ -1,5 +1,5 @@
 export function getWaterMark() {
-    let waterMarkText = 'github.com/Kasen96';
+    let waterMarkText = 'github.com/imkasen';
     let watermark_canvas = document.createElement('canvas');
     let ctx = watermark_canvas.getContext('2d');
     watermark_canvas.width = 100;
