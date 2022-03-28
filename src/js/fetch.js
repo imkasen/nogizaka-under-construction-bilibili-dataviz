@@ -24,22 +24,12 @@ async function fetchURLs() {
                     .then((res) => res.json())
             )
         );
-        // return await Promise.all([
-        //     fetch('resources/bv_info.json')
-        //         .then((res) => res.json()),
-        //     fetch('resources/bv_info2.json')
-        //         .then((res) => res.json()),
-        // ]);
     } catch (error) {
         console.log(error);
     }
 }
 
 fetchURLs().then((bv_data) => {
-    // Promise.all
-    // drawChart(data[0]);
-    // drawChart2(data[1]);
-
     // Promise.allSettled
     if (bv_data[0].status === "fulfilled") {
         drawChart(bv_data[0].value);
@@ -58,8 +48,6 @@ fetchURLs().then((bv_data) => {
     return bv_data[0].value.length + bv_data[1].value.length - 6;
 }).then((ep_num) => {
     // get danmaku data
-    // return fetch(`resources/danmaku/EP${ep_num}.json`)
-    //    .then(res => res.json());
     return fetch(`resources/danmaku.json`)
        .then(res => res.json());
 }).then((danmaku_data) => {
