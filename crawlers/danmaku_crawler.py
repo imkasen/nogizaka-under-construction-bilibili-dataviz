@@ -15,19 +15,19 @@ danmaku_url = "https://comment.bilibili.com/"
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) \
-    Chrome/70.0.3538.110 Safari/537.36"
+     Chrome/70.0.3538.110 Safari/537.36"
 }
 
-proxies = {
-    "http": ""
-}
+# proxies = {
+#     "http": ""
+# }
 
 
-def get_cid_response(bvid):
+def get_cid_response(bvid: str) -> json:
     """
-    get json response content which contains the cid.
-    :param bvid: BV id
-    :return: json format
+    获取包含 cid 的 JSON 内容。
+    :param bvid: 视频的 BVID
+    :return: json
     """
     params = {
         "bvid": bvid,
@@ -38,17 +38,20 @@ def get_cid_response(bvid):
         url=cid_url,
         headers=headers,
         params=params,
-        proxies=proxies,
+        # proxies=proxies,
         timeout=5,
     )
 
-    return response.json()
+    if response.status_code == requests.codes.ok:
+        return response.json()
+    else:
+        response.raise_for_status()
 
 
-def get_danmaku(cid):
+def get_danmaku(cid: int) -> dict:
     """
-    use cid to get the barrage and count the word frequency.
-    :param cid:
+    根据 cid 获得弹幕，使用结巴分词并统计单词出现的频率。
+    :param cid: 视频的 cid
     :return: dict
     """
     # 弹幕文件格式
@@ -80,19 +83,18 @@ def get_danmaku(cid):
     return danmaku_dict
 
 
-def main():
-    # get danmaku of the last video
+def main() -> None:
+    # 只获取最近一次 EP 的弹幕
     with open('resources/bv_info2.json', 'r') as read_file:
         bv_data = json.load(read_file)
-        # 更新上周弹幕
         last_bv = bv_data[-1]['BV']
-        last_ep = bv_data[-1]['EP']
+        # last_ep = bv_data[-1]['EP']
         last_title = bv_data[-1]['Title']
         cid_data = get_cid_response(last_bv)
-        last_cid = cid_data['data'][0]['cid']  # p=1
+        last_cid = cid_data['data'][0]['cid']
         danmaku = get_danmaku(last_cid)
         # with open(f'resources/danmaku/{last_ep}.json', 'w') as write_file:
-            # json.dump([last_title, danmaku], write_file, ensure_ascii=False, indent=4)
+        #     json.dump([last_title, danmaku], write_file, ensure_ascii=False, indent=4)
         with open(f'resources/danmaku.json', 'w') as write_file:
             json.dump([last_title, danmaku], write_file, ensure_ascii=False, indent=4)
 

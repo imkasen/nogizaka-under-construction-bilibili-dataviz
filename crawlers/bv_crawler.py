@@ -25,26 +25,26 @@ headers = {
 }
 
 # 代理
-proxies = {
-    "http": ""
-}
+# proxies = {
+#     "http": ""
+# }
 
 
-def get_response(mid, page_number, keyword):
+def get_response(mid: str, page_number: int, keyword: str) -> json:
     """
-    get response content.
-    :param mid: user id number
-    :param page_number: current page number
-    :param keyword: search keyword
-    :return: json format
+    获得相应内容。
+    :param mid: 用户 ID
+    :param page_number: 当前页面号
+    :param keyword: 搜索关键词
+    :return: json
     """
     params = {
-        "mid": mid,
-        "ps": "30",
-        "tid": "0",
-        "pn": str(page_number),
-        "keyword": keyword,
-        "order": "pubdate",
+        "mid": mid,              # 用户 ID
+        "ps": "30",              # 每一页显示的视频数量
+        "tid": "0",              # 视频分区
+        "pn": str(page_number),  # 第几页
+        "keyword": keyword,      # 搜索关键词
+        "order": "pubdate",      # 按发布日期排序
         "jsonp": "jsonp"
     }
 
@@ -56,26 +56,29 @@ def get_response(mid, page_number, keyword):
         timeout=5
     )
 
-    return response.json()
+    if response.status_code == requests.codes.ok:
+        return response.json()
+    else:
+        response.raise_for_status()
 
 
-def get_total_page_number(mid, keyword):
+def get_total_page_number(mid: str, keyword: str) -> int:
     """
-    obtain total page numbers for each keyword.
-    :param mid: user id number
-    :param keyword: search keyword
+    获得关键词所对应的搜索结果页面总数。
+    :param mid: 用户 ID
+    :param keyword: 搜索关键词
     :return: int
     """
-    page_result = get_response(mid, "1", keyword)
+    page_result = get_response(mid, 1, keyword)
     return math.ceil(page_result['data']['page']['count'] / page_result['data']['page']['ps'])
 
 
-def collect_bv_info(mid, keyword, ep_list):
+def collect_bv_info(mid: str, keyword: str, ep_list: list) -> None:
     """
-    refilter the information of each video and store it into the list.
-    :param mid: user id
-    :param keyword: search keyword
-    :param ep_list: to store the information
+    过滤整理每个视频的信息并保存在列表中。
+    :param mid: 用户 ID
+    :param keyword: 搜索关键词
+    :param ep_list: 用于保存信息
     :return: None
     """
     for page_num in reversed(range(1, get_total_page_number(mid, keyword) + 1)):
@@ -101,11 +104,11 @@ def collect_bv_info(mid, keyword, ep_list):
             video_title = re.sub(reg_str, '', video_title).strip()
 
             if video_ep == "":
-                video_ep = "EP86.5"  # 【乃木坂工事中SP】161229 乃木坂46&欅坂46共同大年会
+                video_ep = "EP86.5"      # 【乃木坂工事中SP】161229 乃木坂46&欅坂46共同大年会
             if video_ep == "EP04【":
                 video_ep = video_ep[:4]  # EP04【乃木坂不够热】提取问题
             if video_play == "--":
-                video_play = None    # 【乃木坂工事中】EP40 无播放数据
+                video_play = None        # 【乃木坂工事中】EP40 无播放数据
 
             video_index = float(video_ep[2:6])                                                            # 序号
 
@@ -135,7 +138,7 @@ def collect_bv_info(mid, keyword, ep_list):
             })
 
 
-def main():
+def main() -> None:
     bv_lists = []
     bv_lists2 = []
     # 天翼羽魂
