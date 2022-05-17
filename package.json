@@ -5,7 +5,7 @@
   "main": "src/sass/styles.scss",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kasen96/Nogizaka-Under-Construction-Bilibili-Dataviz.git"
+    "url": "git+https://github.com/imkasen/nogizaka-under-construction-bilibili-dataviz.git"
   },
   "scripts": {
     "css-build": "node-sass --omit-source-map-url src/sass/styles.scss src/css/styles.css",
@@ -15,9 +15,9 @@
   "author": "Kasen",
   "license": "GNU GPL v3",
   "bugs": {
-    "url": "https://github.com/Kasen96/Nogizaka-Under-Construction-Bilibili-Dataviz/issues"
+    "url": "https://github.com/imkasen/nogizaka-under-construction-bilibili-dataviz/issues"
   },
-  "homepage": "https://github.com/Kasen96/Nogizaka-Under-Construction-Bilibili-Dataviz#readme",
+  "homepage": "https://github.com/imkasen/nogizaka-under-construction-bilibili-dataviz#readme",
   "devDependencies": {
     "bulma": "^0.9.3",
     "node-sass": "^6.0.1"
