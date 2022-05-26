@@ -81,8 +81,15 @@ def collect_bv_info(mid: str, keyword: str, ep_list: list) -> None:
     :param ep_list: 用于保存信息
     :return: None
     """
-    for page_num in reversed(range(1, get_total_page_number(mid, keyword) + 1)):
+    for page_num in reversed(range(1, get_total_page_number(mid, keyword) + 1)):  # 用 reversed() 是因为最新的 ep 出现在最前，所以使用倒序，即从 ep1 开始，下面同理
         results = get_response(mid, page_num, keyword)
+        
+        # 尝试解决 KeyError: 'data' 错误：
+        # 原因应该是请求太快引发的，
+        # response status code 应该还是 200，得到的也还是 json
+        if not 'data' in results:
+            time.sleep(30)  # 人为等待 30s
+            results = get_response(mid, page_num, keyword)  # 再次请求
 
         for bv_info in reversed(results['data']['list']['vlist']):
 
